@@ -517,3 +517,78 @@ namespace grains {
 		return ULLONG_MAX;
 	}
 }
+
+namespace grade_school {
+	void school::add(const std::string& name, int grade)
+	{
+		students[grade].push_back(name);
+		std::sort(students[grade].begin(), students[grade].end());
+	}
+	std::map<int, std::vector<std::string>> school::roster() const
+	{
+		return students;
+	}
+    std::vector<std::string> school::grade(int grade) const {
+        if (students.find(grade) == students.end())
+            return {};
+        return students.at(grade);
+    }
+}
+
+namespace hamming {
+	int compute(std::string dna1, std::string dna2)
+	{
+		if (dna1.size() != dna2.size())
+			throw std::domain_error("DNA strands must be of equal length");
+		int distance = 0;
+		for (size_t i = 0; i < dna1.size(); ++i) {
+			if (dna1[i] != dna2[i])
+				++distance;
+		}
+		return distance;
+	}
+}
+
+namespace nucleotide_count {
+	std::map<char, int> count(std::string sequence)
+	{
+		std::map<char, int> nucleotide_count{ {'A',0}, {'C', 0}, {'G', 0}, {'T',0} };
+		for (char c : sequence) {
+			if (c != 'A' && c != 'C' && c != 'G' && c != 'T') 
+				throw std::invalid_argument("Invalid nucleotide");
+			++nucleotide_count[c];
+		}
+		return nucleotide_count;
+	}
+}
+
+namespace rna_transcription {
+	char to_rna(char dna) {
+		switch (dna) {
+			case 'G': return 'C';
+			case 'C': return 'G';
+			case 'T': return 'A';
+			case 'A': return 'U';
+			default: throw std::invalid_argument("Invalid nucleotide");
+		}
+	}
+	std::string to_rna(const std::string dna) {
+		std::string rna;
+		for (char c : dna) {
+			rna += to_rna(c);
+		}
+		return rna;
+	}
+}
+
+namespace collatz_conjecture {
+	int steps(int n) {
+		if (n <= 0) throw std::domain_error("Only positive numbers are allowed");
+		int steps = 0;
+		while (n != 1) {
+			n = (n % 2 == 0) ? n / 2 : 3 * n + 1;
+			++steps;
+		}
+		return steps;
+	}
+}

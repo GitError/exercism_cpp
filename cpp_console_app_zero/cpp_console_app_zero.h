@@ -10,6 +10,7 @@
 #include <algorithm>
 #include <stdexcept>
 #include <limits.h>
+#include <map>
 
 int main();
 
@@ -220,4 +221,32 @@ namespace two_fer
 namespace grains {
 	unsigned long long square(int n);
 	unsigned long long total();
+}
+
+namespace grade_school {
+	class school {
+	public:
+		void add(const std::string& name, int grade);
+		std::vector<std::string> grade(int grade) const;
+		std::map<int, std::vector<std::string>> roster() const;
+	private:
+		std::map<int, std::vector<std::string>> students;
+	};
+}
+
+namespace hamming {
+	int compute(std::string dna1, std::string dna2);
+}
+
+namespace nucleotide_count {
+	std::map<char, int> count(const std::string sequence);
+}
+
+namespace rna_transcription {
+	char to_rna(char dna);
+	std::string to_rna(std::string dna);
+}
+
+namespace collatz_conjecture {
+	int steps(int n);
 }
