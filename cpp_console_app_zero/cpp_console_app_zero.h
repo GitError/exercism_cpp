@@ -8,6 +8,7 @@
 #include <unordered_set>
 #include <unordered_map>
 #include <algorithm>
+#include <stdexcept>
 
 int main();
 
@@ -203,4 +204,9 @@ namespace space_age {
 		static constexpr float URANUS_YEAR_RATIO = 84.016846f;
 		static constexpr float NEPTUNE_YEAR_RATIO = 164.79132f;
 	};
+}
+
+namespace triangle {
+	enum flavor { equilateral , isosceles, scalene };
+	flavor kind(double a, double b, double c);
 }
