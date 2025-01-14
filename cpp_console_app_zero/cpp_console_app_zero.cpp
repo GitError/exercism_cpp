@@ -592,3 +592,53 @@ namespace collatz_conjecture {
 		return steps;
 	}
 }
+
+namespace difference_of_squares {
+	int square_of_sum(int n) {
+		int sum = n * (n + 1) / 2;
+		return sum * sum;
+	}
+	int sum_of_squares(int n) {
+		return n * (n + 1) * (2 * n + 1) / 6;
+	}
+	int difference(int n) {
+		return square_of_sum(n) - sum_of_squares(n);
+	}
+}
+
+namespace matching_brackets {
+	bool check(const std::string brackets) {
+		std::stack<char> stack;
+		for (char c : brackets) {
+			switch (c) {
+			case '(': case '[': case '{':
+				stack.push(c);
+				break;
+			case ')':
+				if (stack.empty() || stack.top() != '(') return false;
+				stack.pop();
+				break;
+			case ']':
+				if (stack.empty() || stack.top() != '[') return false;
+				stack.pop();
+				break;
+			case '}':
+				if (stack.empty() || stack.top() != '{') return false;
+				stack.pop();
+				break;
+			}
+		}
+		return stack.empty();
+	}
+}
+
+namespace trinary {
+	int to_decimal(const std::string& trinary) {
+		int decimal = 0;
+		for (char c : trinary) {
+			if (c < '0' || c > '2') return 0;
+			decimal = decimal * 3 + (c - '0');
+		}
+		return decimal;
+	}
+}

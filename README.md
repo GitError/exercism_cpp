@@ -89,7 +89,7 @@ Index:
     - `enum flavor;`
 	- `bool is_equilateral(double a, double b, double c);`
 - [x] two_fer
-        -`std::string two_fer(std::string name = "you");`
+    - `std::string two_fer(std::string name = "you");`
 - [x] grains
     - `unsigned long long square(int n);`
 	- `unsigned long long total();`
@@ -104,3 +104,9 @@ Index:
 	- `std::string to_rna(std::string dna);`
 - [x] collatz_conjecture
     - `int steps(int n);`
+- [x] difference_of_squares
+    - `int square_of_sum(int n);`
+    - `int sum_of_squares(int n);`
+    - `int difference(int n);`
+- [x] trinary
+    - `int to_decimal(const std::string& trinary);`

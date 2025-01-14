@@ -11,6 +11,7 @@
 #include <stdexcept>
 #include <limits.h>
 #include <map>
+#include <stack>
 
 int main();
 
@@ -249,4 +250,18 @@ namespace rna_transcription {
 
 namespace collatz_conjecture {
 	int steps(int n);
+}
+
+namespace difference_of_squares {
+	int square_of_sum(int n);
+	int sum_of_squares(int n);
+	int difference(int n);
+}
+
+namespace matching_brackets {
+	bool check(std::string brackets);
+}
+
+namespace trinary {
+	int to_decimal(const std::string& trinary);
 }
