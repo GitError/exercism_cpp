@@ -497,3 +497,23 @@ namespace triangle {
 		return flavor::scalene;
 	}
 }
+
+namespace two_fer {
+	std::string two_fer::two_fer(std::string name)
+	{
+		return "One for " + name + ", one for me.";
+	}
+}
+
+namespace grains {
+	unsigned long long square(int n)
+	{
+		if (n < 1 || n > 64)
+			throw std::domain_error("n must be between 1 and 64");
+		return 1ULL << (n - 1);
+	}
+	unsigned long long total()
+	{
+		return ULLONG_MAX;
+	}
+}

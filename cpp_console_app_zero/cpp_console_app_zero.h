@@ -9,6 +9,7 @@
 #include <unordered_map>
 #include <algorithm>
 #include <stdexcept>
+#include <limits.h>
 
 int main();
 
@@ -209,4 +210,14 @@ namespace space_age {
 namespace triangle {
 	enum flavor { equilateral , isosceles, scalene };
 	flavor kind(double a, double b, double c);
+}
+
+namespace two_fer
+{
+	std::string two_fer(std::string name = "you");
+}
+
+namespace grains {
+	unsigned long long square(int n);
+	unsigned long long total();
 }
