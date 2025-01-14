@@ -1,21 +1,13 @@
-#include <iostream>
-#include <string>
 #include "cpp_console_app_zero.h"
-#include <sstream>
-#include <cmath>
-#include <array>
-#include <vector>
-#include <unordered_set>
-#include <algorithm>
 
 int main()
 {
-	speedywagon::pillar_men_sensor* sensor{ nullptr };
-	bool isConnected = speedywagon::connection_check(sensor);
-	std::cout << "Is connected: " << isConnected << std::endl;
-	speedywagon::pillar_men_sensor sensor_array[3] = { {0}, {101}, {22} };
-	int activity = speedywagon::activity_counter(&sensor_array[0], 3);
-	std::cout << "Activity: " << activity << std::endl;
+	const space_age::space_age age(8210123456);
+
+	std::cout << "Earth: " << age.on_earth() << '\n';
+	std::cout << "Mercury: " << age.on_mercury() << '\n';
+	std::cout << "Venus: " << age.on_venus() << '\n';
+
 	return 0;
 }
 
@@ -479,3 +471,15 @@ namespace speedywagon {
 	}
 }
 
+namespace space_age {
+	space_age::space_age(long int seconds) : secs(seconds) {}
+	long int space_age::seconds() const { return secs; }
+	float space_age::on_earth() const { return secs / EARTH_YEAR_IN_SECONDS; }
+	float space_age::on_mercury() const { return on_earth() / MERCURY_YEAR_RATIO; }
+	float space_age::on_venus() const {	return on_earth() / VENUS_YEAR_RATIO; }
+	float space_age::on_mars() const { return on_earth() / MARS_YEAR_RATIO; }
+	float space_age::on_jupiter() const { return on_earth() / JUPITER_YEAR_RATIO; }
+	float space_age::on_saturn() const { return on_earth() / SATURN_YEAR_RATIO; }
+	float space_age::on_uranus() const { return on_earth() / URANUS_YEAR_RATIO; }
+	float space_age::on_neptune() const { return on_earth() / NEPTUNE_YEAR_RATIO; }
+}
