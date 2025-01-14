@@ -1,5 +1,106 @@
 ## Exercism.org C++
 
-This is a collection of C++ exercises from the Exercism C++ Training Path.
+This is a collection of C++ exercises from the exercism.org C++ training path.
 
-All solutions are in the `cpp_console_app_zero.cpp` & `cpp_console_app_zero.h` files.
+All solutions are in `cpp_console_app_zero.cpp` & `cpp_console_app_zero.h` separated by namespace.
+
+Index:
+- [x] raindrops 
+    - `std::string convert(int drops);`
+- [x] log_line
+    - `std::string message(std::string line);`
+	- `std::string log_level(std::string line);`
+	- `std::string reformat(std::string line);`
+- [x] reverse_string
+    - `std::string reverse_string(std::string input);`
+- [x] numbers_1
+    -  `double daily_rate(double hourly_rate);`
+	-  `double apply_discount(double before_discount, double discount);`
+	-  `int monthly_rate(double hourly_rate, double discount);`
+	-  `int days_in_budget(int budget, double hourly_rate, double discount);`
+- [x] vehicle_purchase
+    - `bool needs_license(std::string kind);`
+	- `std::string choose_vehicle(std::string option1, std::string option2);`
+	- `double calculate_resell_price(double original_price, double age);`
+- [x] loops_1
+    - `double interest_rate(double balance);`
+	- `double yearly_interest(double balance);`
+	- `double annual_balance_update(double balance);`
+	- `int years_until_desired_balance(double balance, double target_balance);`
+- [x] targets
+    - `class Alien`
+- [x] atbash_cipher
+    - `char atbash(char c);`
+	- `std::string transform(const std::string& input);`
+	- `std::string encode(const std::string& input);`
+	- `std::string decode(const std::string& input);`
+- [x] marking_grades
+    - `std::vector<int> round_down_scores(std::vector<double> student_scores);`
+	- `int count_failed_students(std::vector<int> student_scores);`
+	- `std::vector<int> above_threshold(std::vector<int> student_scores, int threshold);`
+	- `std::array<int, 4> letter_grades(int highest_score);`
+	- `std::vector<std::string> student_ranking(const std::vector<int>& student_scores, const std::vector<std::string>& student_names);`
+	- `std::string perfect_score(std::vector<int> student_scores, std::vector<std::string> student_names);`
+- [x] darts
+    - `int score(double x, double y);`
+- [x] hexadecimal
+    - `int hex_char_to_decimal(char hex_char);`
+	- `long long convert(const std::string& hex_string);`
+- [x] election
+    - `int vote_count(const ElectionResult& candidate);`
+	- `void increment_vote_count(ElectionResult& candidate, int votes);`
+	- `ElectionResult& determine_result(std::vector<ElectionResult>& final_count);`
+- [x] hellmath
+    - `enum class AccountStatus { troll, guest, user, mod };`
+	- `enum class Action { read, write, remove };`
+	- `bool display_post(AccountStatus poster, AccountStatus viewer);`
+	- `bool permission_check(Action action, AccountStatus account);`
+	- `bool valid_player_combination(AccountStatus player1, AccountStatus player2);`
+	- `bool has_priority(AccountStatus account1, AccountStatus account2);`
+- [x] protein_translation
+    - `std::vector<std::string> proteins(std::string rna);`
+- [x] rotational_cipher
+    - `std::string rotate(std::string input, int shift);`
+- [x] pangram
+    - `bool is_pangram(std::string sentence);`
+- [x] star_map
+    - `enum System`
+- [x] heaven
+    - `class Vessel`
+	- `std::string get_older_bob(Vessel one, Vessel two);`
+	- `bool in_the_same_system(Vessel one, Vessel two);`
+- [x] lasagna_master
+    - `struct amount;`
+	- `int preparationTime(std::vector<std::string> layers, int minutes_per_layer=2);`
+	- `amount quantities(std::vector<std::string> layers);`
+	- `void addSecretIngredient(std::vector<std::string> &my_layers, std::vector<std::string> friend_layers);`
+	- `void addSecretIngredient(std::vector<std::string>& my_layers, std::string secret_ingredient);`
+	- `std::vector<double> scaleRecipe(std::vector<double> quantities_for_two_portions, int portions);`
+- [x] speedywagon
+    - `struct pillar_men_sensor;`
+	- `int uv_light_heuristic(std::vector<int>* data_array);`
+	- `bool connection_check(pillar_men_sensor* sensor);`
+	- `int activity_counter(pillar_men_sensor* first_sensor, int capacity);`
+	- `bool alarm_control(pillar_men_sensor* sensor);`
+	- `bool uv_alarm(pillar_men_sensor* sensor);`
+- [x] space_age
+    - `class space_age;`
+- [x] triangle
+    - `enum flavor;`
+	- `bool is_equilateral(double a, double b, double c);`
+- [x] two_fer
+        -`std::string two_fer(std::string name = "you");`
+- [x] grains
+    - `unsigned long long square(int n);`
+	- `unsigned long long total();`
+- [x] grade_school
+    - `class school;`
+- [x] hamming
+	- `int compute(std::string a, std::string b);`
+- [x] nucleotide_count
+	- `std::map<char, int> count(const std::string sequence);`
+- [x] rna_transcription
+    - `char to_rna(char dna);`
+	- `std::string to_rna(std::string dna);`
+- [x] collatz_conjecture
+    - `int steps(int n);`
