@@ -265,3 +265,11 @@ namespace matching_brackets {
 namespace trinary {
 	int to_decimal(const std::string& trinary);
 }
+
+namespace isogram {
+	bool is_isogram(const std::string& word);
+}
+
+namespace luhn {
+	bool valid(std::string digits);
+}

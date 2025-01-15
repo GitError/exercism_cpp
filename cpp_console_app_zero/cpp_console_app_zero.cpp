@@ -380,18 +380,18 @@ namespace heaven {
 	Vessel::Vessel(std::string name) { this->name = name; this->generation = 1; this->busters = 0; this->current_system = star_map::System::Sol; }
 	Vessel::Vessel(std::string name, int generation) { this->name = name; this->generation = generation; this->busters = 0; this->current_system = star_map::System::Sol; }
 	Vessel::Vessel(std::string name, int generation, star_map::System current_system) { this->name = name; this->generation = generation; this->busters = 0; this->current_system = current_system; }
-	Vessel Vessel::replicate(std::string name) { 
-		return Vessel(name, this->generation + 1, this->current_system); 
+	Vessel Vessel::replicate(std::string name) {
+		return Vessel(name, this->generation + 1, this->current_system);
 	}
-	void Vessel::make_buster() { 
-		this->busters++; 
+	void Vessel::make_buster() {
+		this->busters++;
 	}
-	bool Vessel::shoot_buster() { 
-		if (this->busters > 0) { 
-			this->busters--; 
-			return true; 
-		} 
-		return false; 
+	bool Vessel::shoot_buster() {
+		if (this->busters > 0) {
+			this->busters--;
+			return true;
+		}
+		return false;
 	}
 	std::string get_older_bob(Vessel one, Vessel two) {
 		return (one.generation < two.generation) ? one.name : two.name;
@@ -476,7 +476,7 @@ namespace space_age {
 	long int space_age::seconds() const { return secs; }
 	float space_age::on_earth() const { return secs / EARTH_YEAR_IN_SECONDS; }
 	float space_age::on_mercury() const { return on_earth() / MERCURY_YEAR_RATIO; }
-	float space_age::on_venus() const {	return on_earth() / VENUS_YEAR_RATIO; }
+	float space_age::on_venus() const { return on_earth() / VENUS_YEAR_RATIO; }
 	float space_age::on_mars() const { return on_earth() / MARS_YEAR_RATIO; }
 	float space_age::on_jupiter() const { return on_earth() / JUPITER_YEAR_RATIO; }
 	float space_age::on_saturn() const { return on_earth() / SATURN_YEAR_RATIO; }
@@ -528,11 +528,11 @@ namespace grade_school {
 	{
 		return students;
 	}
-    std::vector<std::string> school::grade(int grade) const {
-        if (students.find(grade) == students.end())
-            return {};
-        return students.at(grade);
-    }
+	std::vector<std::string> school::grade(int grade) const {
+		if (students.find(grade) == students.end())
+			return {};
+		return students.at(grade);
+	}
 }
 
 namespace hamming {
@@ -554,7 +554,7 @@ namespace nucleotide_count {
 	{
 		std::map<char, int> nucleotide_count{ {'A',0}, {'C', 0}, {'G', 0}, {'T',0} };
 		for (char c : sequence) {
-			if (c != 'A' && c != 'C' && c != 'G' && c != 'T') 
+			if (c != 'A' && c != 'C' && c != 'G' && c != 'T')
 				throw std::invalid_argument("Invalid nucleotide");
 			++nucleotide_count[c];
 		}
@@ -565,11 +565,11 @@ namespace nucleotide_count {
 namespace rna_transcription {
 	char to_rna(char dna) {
 		switch (dna) {
-			case 'G': return 'C';
-			case 'C': return 'G';
-			case 'T': return 'A';
-			case 'A': return 'U';
-			default: throw std::invalid_argument("Invalid nucleotide");
+		case 'G': return 'C';
+		case 'C': return 'G';
+		case 'T': return 'A';
+		case 'A': return 'U';
+		default: throw std::invalid_argument("Invalid nucleotide");
 		}
 	}
 	std::string to_rna(const std::string dna) {
@@ -640,5 +640,35 @@ namespace trinary {
 			decimal = decimal * 3 + (c - '0');
 		}
 		return decimal;
+	}
+}
+
+namespace isogram {
+	bool is_isogram(const std::string& word) {
+		std::unordered_set<char> seen;
+		for (char c : word) {
+			if (isalpha(c) && !seen.insert(tolower(c)).second) {
+				return false;
+			}
+		}
+		return true;
+	}
+}
+
+namespace luhn {
+	bool valid(std::string digits) {
+		digits.erase(remove_if(digits.begin(), digits.end(), isspace), digits.end());
+		if (digits.size() <= 1) return false;
+		int sum = 0;
+		bool even = digits.size() % 2 == 0;
+		for (char c : digits) {
+			if (!isdigit(c)) return false;
+			int digit = c - '0';
+			if (even) digit *= 2;
+			if (digit > 9) digit -= 9;
+			sum += digit;
+			even = !even;
+		}
+		return sum % 10 == 0;
 	}
 }

@@ -110,3 +110,7 @@ Index:
     - `int difference(int n);`
 - [x] trinary
     - `int to_decimal(const std::string& trinary);`
+- [x] isogram
+    - `bool is_isogram(const std::string& word);`
+- [x] luhn
+    - `bool valid(std::string digits);`
