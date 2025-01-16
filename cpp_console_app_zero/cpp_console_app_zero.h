@@ -273,3 +273,8 @@ namespace isogram {
 namespace luhn {
 	bool valid(std::string digits);
 }
+
+namespace nth_prime {
+	bool is_prime(int n);
+	int nth(int n);
+}

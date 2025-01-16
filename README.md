@@ -114,3 +114,6 @@ Index:
     - `bool is_isogram(const std::string& word);`
 - [x] luhn
     - `bool valid(std::string digits);`
+- [x] nth_prime
+    - `bool is_prime(int n);`
+	- `int nth(int n);`
