@@ -1,4 +1,4 @@
-## Exercism.org C++
+## Exercism C++
 
 This is a collection of C++ exercises from the exercism.org C++ training path.
 
@@ -28,7 +28,7 @@ Index:
 	- `double annual_balance_update(double balance);`
 	- `int years_until_desired_balance(double balance, double target_balance);`
 - [x] targets
-    - `class Alien`
+    - `class Alien {};`
 - [x] atbash_cipher
     - `char atbash(char c);`
 	- `std::string transform(const std::string& input);`
@@ -51,8 +51,8 @@ Index:
 	- `void increment_vote_count(ElectionResult& candidate, int votes);`
 	- `ElectionResult& determine_result(std::vector<ElectionResult>& final_count);`
 - [x] hellmath
-    - `enum class AccountStatus { troll, guest, user, mod };`
-	- `enum class Action { read, write, remove };`
+    - `enum AccountStatus { troll, guest, user, mod };`
+	- `enum Action { read, write, remove };`
 	- `bool display_post(AccountStatus poster, AccountStatus viewer);`
 	- `bool permission_check(Action action, AccountStatus account);`
 	- `bool valid_player_combination(AccountStatus player1, AccountStatus player2);`
@@ -66,7 +66,7 @@ Index:
 - [x] star_map
     - `enum System`
 - [x] heaven
-    - `class Vessel`
+    - `class Vessel {}`
 	- `std::string get_older_bob(Vessel one, Vessel two);`
 	- `bool in_the_same_system(Vessel one, Vessel two);`
 - [x] lasagna_master
@@ -84,7 +84,7 @@ Index:
 	- `bool alarm_control(pillar_men_sensor* sensor);`
 	- `bool uv_alarm(pillar_men_sensor* sensor);`
 - [x] space_age
-    - `class space_age;`
+    - `class space_age {};`
 - [x] triangle
     - `enum flavor;`
 	- `bool is_equilateral(double a, double b, double c);`
@@ -94,7 +94,7 @@ Index:
     - `unsigned long long square(int n);`
 	- `unsigned long long total();`
 - [x] grade_school
-    - `class school;`
+    - `class school {};`
 - [x] hamming
 	- `int compute(std::string a, std::string b);`
 - [x] nucleotide_count
@@ -117,3 +117,10 @@ Index:
 - [x] nth_prime
     - `bool is_prime(int n);`
 	- `int nth(int n);`
+- [x] simple_linked_list
+    - `class List {};`
+- [x] kindergarten_garden
+    - `enum Plants { clover, grass, violets, radishes };`
+	- `std::array<Plants, 4> plants(std::string garden, std::string student);`
+- [x] gigasecond
+    - `boost::posix_time::ptime advance(const boost::posix_time::ptime inputTime);`
