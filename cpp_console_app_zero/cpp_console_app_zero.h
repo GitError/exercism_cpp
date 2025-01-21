@@ -12,6 +12,8 @@
 #include <limits.h>
 #include <map>
 #include <stack>
+#include <cstddef>
+#include "boost/date_time/posix_time/posix_time.hpp"
 
 int main();
 
@@ -163,9 +165,9 @@ namespace heaven {
 
 namespace lasagna_master {
 	struct amount { int noodles; double sauce; };
-	int preparationTime(std::vector<std::string> layers, int minutes_per_layer=2);
+	int preparationTime(std::vector<std::string> layers, int minutes_per_layer = 2);
 	amount quantities(std::vector<std::string> layers);
-	void addSecretIngredient(std::vector<std::string> &my_layers, std::vector<std::string> friend_layers);
+	void addSecretIngredient(std::vector<std::string>& my_layers, std::vector<std::string> friend_layers);
 	void addSecretIngredient(std::vector<std::string>& my_layers, std::string secret_ingredient);
 	std::vector<double> scaleRecipe(std::vector<double> quantities_for_two_portions, int portions);
 }
@@ -210,7 +212,7 @@ namespace space_age {
 }
 
 namespace triangle {
-	enum flavor { equilateral , isosceles, scalene };
+	enum flavor { equilateral, isosceles, scalene };
 	flavor kind(double a, double b, double c);
 }
 
@@ -277,4 +279,38 @@ namespace luhn {
 namespace nth_prime {
 	bool is_prime(int n);
 	int nth(int n);
+}
+
+namespace simple_linked_list {
+	class List {
+	public:
+		List() = default;
+		~List();
+		List(const List&) = delete;
+		List& operator=(const List&) = delete;
+		List(List&&) = delete;
+		List& operator=(List&&) = delete;
+		std::size_t size() const;
+		void push(int entry);
+		int pop();
+		void reverse();
+	private:
+		struct Element {
+			Element(int data) : data{ data } {};
+			int data{};
+			Element* next{ nullptr };
+		};
+		Element* head{ nullptr };
+		std::size_t current_size{ 0 };
+	};
+
+}
+
+namespace kindergarten_garden {
+	enum Plants { clover, grass, violets, radishes };
+	std::array<Plants, 4> plants(std::string garden, std::string student);
+}
+ 
+namespace gigasecond {
+	boost::posix_time::ptime advance(const boost::posix_time::ptime inputTime);
 }

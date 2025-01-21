@@ -2,12 +2,12 @@
 
 int main()
 {
-	const space_age::space_age age(8210123456);
-
-	std::cout << "Earth: " << age.on_earth() << '\n';
-	std::cout << "Mercury: " << age.on_mercury() << '\n';
-	std::cout << "Venus: " << age.on_venus() << '\n';
-
+	simple_linked_list::List empty{};
+	std::cout << "Initial ll size " << empty.size() << std::endl;
+	empty.push(1);
+	empty.push(2);
+	empty.push(3);
+	std::cout << "Updated ll size " << empty.size() << std::endl;
 	return 0;
 }
 
@@ -683,7 +683,6 @@ namespace nth_prime {
 		}
 		return true;
 	}
-
 	int nth(int n) {
 		if (n <= 0) throw std::domain_error("n must be positive");
 		int count = 0;
@@ -695,5 +694,61 @@ namespace nth_prime {
 			}
 		}
 		return num;
+	}
+}
+
+namespace simple_linked_list {
+	std::size_t List::size() const {
+		return current_size;
+	}
+	void List::push(int entry) {
+		Element* new_element = new Element(entry);
+		new_element->next = head;
+		head = new_element;
+		++current_size;
+	}
+	int List::pop() {
+		if (!head) throw std::out_of_range("List is empty");
+		Element* temp = head;
+		int data = head->data;
+		head = head->next;
+		delete temp;
+		--current_size;
+		return data;
+	}
+	void List::reverse() {
+		Element* prev = nullptr;
+		Element* current = head;
+		while (current) {
+			Element* next = current->next;
+			current->next = prev;
+			prev = current;
+			current = next;
+		}
+		head = prev;
+	}
+	List::~List() {
+		while (head) {
+			Element* temp = head;
+			head = head->next;
+			delete temp;
+		}
+	}
+}
+
+namespace kindergarten_garden {
+	std::array<Plants, 4> plants(std::string garden, std::string student) {
+		std::array<Plants, 4> student_plants{};
+		int index = 0;
+		for (size_t i = 0; i < garden.size(); i += 2) {
+			student_plants[index++] = static_cast<Plants>(garden[i] * 4 + garden[i + 1]);
+		}
+		return student_plants;
+	}
+}
+
+namespace gigasecond {
+	boost::posix_time::ptime advance(const boost::posix_time::ptime inputTime) {
+		return inputTime + boost::posix_time::seconds(1'000'000'000);
 	}
 }
