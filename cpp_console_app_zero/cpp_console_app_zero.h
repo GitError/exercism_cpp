@@ -314,3 +314,7 @@ namespace kindergarten_garden {
 namespace gigasecond {
 	boost::posix_time::ptime advance(const boost::posix_time::ptime inputTime);
 }
+
+namespace pascals_triangle {
+	std::vector<std::vector<int>> generate_rows(int n);
+}
