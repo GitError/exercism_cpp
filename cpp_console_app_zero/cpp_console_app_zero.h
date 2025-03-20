@@ -318,3 +318,46 @@ namespace gigasecond {
 namespace pascals_triangle {
 	std::vector<std::vector<int>> generate_rows(int n);
 }
+
+namespace armstrong_numbers {
+	bool is_armstrong_number(int n) {
+		int sum = 0;
+		int num = n;
+		int digits = static_cast<int>(std::log10(n)) + 1;
+		while (n > 0) {
+			sum += std::pow(n % 10, digits);
+			n /= 10;
+		}
+		return sum == num;
+	}
+}
+
+namespace acronym {
+	std::string acronym(std::string phrase);
+}
+
+namespace perfect_numbers {
+	enum class classification { perfect, abundant, deficient };
+	classification classify(int n);
+}
+
+namespace isbn_verifier {
+	bool is_valid(std::string isbn);
+}
+
+namespace binary {
+	int convert(std::string binary);
+}
+
+namespace scrabble_score {
+	int score(std::string word);
+}
+
+namespace pig_latin {
+	std::string translate(std::string phrase);
+}
+
+namespace sublist {
+	enum class comparison { equal, unequal, sublist, superlist };
+	comparison check_lists(std::vector<int> list1, std::vector<int> list2);
+}

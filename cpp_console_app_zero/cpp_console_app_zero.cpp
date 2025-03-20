@@ -765,3 +765,204 @@ namespace pascals_triangle {
 		return triangle;
 	}
 }
+
+namespace armstrong_numbers {
+	bool is_armstrong_number(int n) {
+		int sum = 0;
+		int num = n;
+		int digits = static_cast<int>(std::log10(n)) + 1;
+		while (n > 0) {
+			sum += std::pow(n % 10, digits);
+			n /= 10;
+		}
+		return sum == num;
+	}
+}
+
+namespace acronym {
+	std::string acronym(std::string phrase) {
+		std::string acronym;
+		bool new_word = true;
+		for (char c : phrase) {
+			if (new_word && isalpha(c)) {
+				acronym += toupper(c);
+				new_word = false;
+			}
+			else if (isspace(c) || c == '-') {
+				new_word = true;
+			}
+		}
+		return acronym;
+	}
+}
+
+namespace perfect_numbers {
+	classification classify(int n) {
+		if (n <= 0) {
+			throw std::domain_error("Classification is only possible for positive integers.");
+		}
+		int aliquot_sum = 1; // 1 is a factor of every positive integer
+		for (int i = 2; i <= std::sqrt(n); ++i) {
+			if (n % i == 0) {
+				aliquot_sum += i;
+				if (i != n / i) {
+					aliquot_sum += n / i;
+				}
+			}
+		}
+		if (aliquot_sum == n) {
+			return classification::perfect;
+		}
+		else if (aliquot_sum > n) {
+			return classification::abundant;
+		}
+		else {
+			return classification::deficient;
+		}
+	}
+}
+
+namespace isbn_verifier {
+	bool is_valid(std::string isbn) {
+		isbn.erase(std::remove(isbn.begin(), isbn.end(), '-'), isbn.end()); // Remove dashes
+		if (isbn.size() != 10) {
+			return false; // ISBN-10 must be 10 characters long
+		}
+		int sum = 0;
+		for (int i = 0; i < 10; ++i) {
+			if (isbn[i] == 'X' && i == 9) {
+				sum += 10 * (10 - i);
+			}
+			else if (isdigit(isbn[i])) {
+				sum += (isbn[i] - '0') * (10 - i);
+			}
+			else {
+				return false; // Invalid character found
+			}
+		}
+		return sum % 11 == 0;
+	}
+}
+
+namespace binary {
+	int convert(std::string binary) {
+		int decimal = 0;
+		for (char c : binary) {
+			if (c != '0' && c != '1') {
+				return 0;
+			}
+			decimal = decimal * 2 + (c - '0');
+		}
+		return decimal;
+	}
+}
+
+namespace scrabble_score {
+	int score(std::string word) {
+		int total = 0;
+		for (char c : word) {
+			switch (toupper(c)) {
+			case 'A': case 'E': case 'I': case 'O': case 'U': case 'L': case 'N': case 'R': case 'S': case 'T':
+				total += 1;
+				break;
+			case 'D': case 'G':
+				total += 2;
+				break;
+			case 'B': case 'C': case 'M': case 'P':
+				total += 3;
+				break;
+			case 'F': case 'H': case 'V': case 'W': case 'Y':
+				total += 4;
+				break;
+			case 'K':
+				total += 5;
+				break;
+			case 'J': case 'X':
+				total += 8;
+				break;
+			case 'Q': case 'Z':
+				total += 10;
+				break;
+			}
+		}
+		return total;
+	}
+}
+
+namespace pig_latin {
+	std::string translate(const std::string phrase) {
+		const std::string vowels = "aeiou";
+		std::vector<std::string> result;
+		std::istringstream iss(phrase);
+		std::string word;
+		while (iss >> word) {
+			// Rule 1: Starts with a vowel or "xr"/"yt"
+			if (vowels.find(word[0]) != std::string::npos ||
+				(word.size() >= 2 && (word.substr(0, 2) == "xr" || word.substr(0, 2) == "yt"))) {
+				result.push_back(word + "ay");
+			}
+			// Rule 3: Starts with consonants followed by "qu"
+			else if ((word.size() >= 2 && word.substr(0, 2) == "qu") ||
+				(word.size() >= 3 && word.substr(1, 2) == "qu")) {
+				size_t qu_index = word.find("qu") + 2;
+				result.push_back(word.substr(qu_index) + word.substr(0, qu_index) + "ay");
+			}
+			// Rule 4: Starts with consonants followed by "y"
+			else if (word.find('y') != std::string::npos && word.find('y') > 0) {
+				size_t y_index = word.find('y');
+				bool all_consonants = true;
+
+				for (size_t i = 0; i < y_index; i++) {
+					if (vowels.find(word[i]) != std::string::npos) {
+						all_consonants = false;
+						break;
+					}
+				}
+
+				if (all_consonants) {
+					result.push_back(word.substr(y_index) + word.substr(0, y_index) + "ay");
+				}
+				else {
+					for (size_t i = 0; i < word.size(); i++) {
+						if (vowels.find(word[i]) != std::string::npos) {
+							result.push_back(word.substr(i) + word.substr(0, i) + "ay");
+							break;
+						}
+					}
+				}
+			}
+			// Rule 2: Starts with one or more consonants
+			else {
+				for (size_t i = 0; i < word.size(); i++) {
+					if (vowels.find(word[i]) != std::string::npos) {
+						result.push_back(word.substr(i) + word.substr(0, i) + "ay");
+						break;
+					}
+				}
+			}
+		}
+		// Join the results
+		std::string translated;
+		for (size_t i = 0; i < result.size(); i++) {
+			if (i > 0) translated += " ";
+			translated += result[i];
+		}
+		return translated;
+	}
+}
+
+namespace sublist {
+	comparison check_lists(std::vector<int> list1, std::vector<int> list2) {
+		if (list1 == list2) {
+			return comparison::equal;
+		}
+		else if (std::includes(list1.begin(), list1.end(), list2.begin(), list2.end())) {
+			return comparison::sublist;
+		}
+		else if (std::includes(list2.begin(), list2.end(), list1.begin(), list1.end())) {
+			return comparison::superlist;
+		}
+		return comparison::unequal;
+	}
+}
+
