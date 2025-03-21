@@ -180,6 +180,30 @@ The repository is organized into namespaces, each representing a specific exerci
 	- `long power_intensity(const human& h);`
 - [x] binary_search_tree
 	- `class binary_tree`
+- [x] rail_fence_cipher
+	- `std::string encode(const std::string& plaintext, int num_rails);`
+	- `std::string decode(const std::string& ciphertext, int num_rails);`
+- [x] spiral_matrix
+	- `std::vector<std::vector<uint32_t>> spiral_matrix(int size);`
+- [x] sum_of_multiples
+	- `int to(const std::vector<int>& bases, int level);`
+- [x] robot_name
+	- `class robot`
+	- `bool validate_name(const std::string& name);`
+- [x] date_independent
+	- `class clock`
+- [x] run_length_encoding
+	- `std::string encode(const std::string& text);`
+	- `std::string decode(const std::string& text);`
+- [x] list_ops
+	- `void append(std::vector<T>& list1, const std::vector<T>& list2);`
+	- `std::vector<T> concat(const std::vector<std::vector<T>>& lists);`
+	- `std::vector<T> filter(const std::vector<T>& list, Pred predicate);`
+	- `size_t length(const std::vector<T>& list);`
+	- `std::vector<T> map(const std::vector<T>& list, Func function);`
+	- `Acc foldl(const std::vector<T>& list, Acc initial, Func function);`
+	- `Acc foldr(const std::vector<T>& list, Acc initial, Func function);`
+	- `std::vector<T> reverse(const std::vector<T>& list);`
 
 ## Prerequisites
 

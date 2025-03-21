@@ -1,4 +1,5 @@
 #pragma once
+
 #include <iostream>
 #include <string>
 #include <array>
@@ -15,6 +16,13 @@
 #include <cstddef>
 #include "boost/date_time/posix_time/posix_time.hpp"
 #include <mutex>
+#include <cctype>
+#include <cstdint>
+#include <numeric>
+#include <random>
+#include <regex>
+#include <functional>
+#include <cstddef>
 
 int main();
 
@@ -592,4 +600,195 @@ namespace binary_search_tree {
 		std::unique_ptr<binary_tree> left_;
 		std::unique_ptr<binary_tree> right_;
 	};
+}
+
+namespace rail_fence_cipher {
+	std::string encode(const std::string& plaintext, int num_rails);
+	std::string decode(const std::string& ciphertext, int num_rails);
+}
+
+namespace spiral_matrix {
+	std::vector<std::vector<uint32_t>> spiral_matrix(int size);
+}
+
+namespace sum_of_multiples {
+	int to(const std::vector<int>& bases, int level);
+}
+
+namespace robot_name {
+	class robot {
+	public:
+		robot() {
+			reset();
+		}
+		std::string name() const {
+			return robot_name_;
+		}
+		void reset() {
+			std::string new_name;
+			do {
+				new_name = generate_name();
+			} while (used_names_.find(new_name) != used_names_.end());
+			if (!robot_name_.empty()) {
+				used_names_.erase(robot_name_);
+			}
+			robot_name_ = new_name;
+			used_names_.insert(robot_name_);
+		}
+	private:
+		std::string robot_name_;
+		static std::unordered_set<std::string> used_names_;
+		static std::string generate_name() {
+			static const char letters[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			static std::random_device rd;
+			static std::mt19937 gen(rd());
+			static std::uniform_int_distribution<> letter_dist(0, 25);
+			static std::uniform_int_distribution<> digit_dist(0, 9);
+			std::string name;
+			name += letters[letter_dist(gen)];
+			name += letters[letter_dist(gen)];
+			name += std::to_string(digit_dist(gen));
+			name += std::to_string(digit_dist(gen));
+			name += std::to_string(digit_dist(gen));
+			return name;
+		}
+	};
+	bool validate_name(const std::string& name);
+}
+
+namespace date_independent {
+	class clock {
+	private:
+		int hours_;
+		int minutes_;
+		// Normalize time to ensure hours are in [0,23] and minutes in [0,59]
+		void normalize() {
+			int total_minutes = hours_ * 60 + minutes_;
+			// Handle negative total minutes
+			while (total_minutes < 0) {
+				total_minutes += 24 * 60; // Add a full day
+			}
+			// Normalize to a day
+			total_minutes %= (24 * 60);
+			hours_ = (total_minutes / 60) % 24;
+			minutes_ = total_minutes % 60;
+		}
+	public:
+		// Static factory method to create a clock
+		static clock at(int hours, int minutes) {
+			return clock(hours, minutes);
+		}
+		// Constructor
+		clock(int hours, int minutes) : hours_(hours), minutes_(minutes) {
+			normalize();
+		}
+		// Add minutes to the clock
+		clock plus(int minutes) const {
+			return clock(hours_, minutes_ + minutes);
+		}
+		// Convert to string in "HH:MM" format
+		operator std::string() const {
+			std::ostringstream oss;
+			oss << std::setw(2) << std::setfill('0') << hours_ << ":"
+				<< std::setw(2) << std::setfill('0') << minutes_;
+			return oss.str();
+		}
+		// Equality operator
+		bool operator==(const clock& other) const {
+			return hours_ == other.hours_ && minutes_ == other.minutes_;
+		}
+		// Inequality operator
+		bool operator!=(const clock& other) const {
+			return !(*this == other);
+		}
+	};
+}
+
+namespace run_length_encoding {
+	std::string encode(const std::string& text);
+	std::string decode(const std::string& text);
+}
+
+namespace list_ops {
+	// Append: Add all items from the second list to the end of the first list
+	template <typename T>
+	void append(std::vector<T>& list1, const std::vector<T>& list2) {
+		for (const auto& item : list2) {
+			list1.push_back(item);
+		}
+	}
+
+	// Concat: Combine all items from a series of lists into one flattened list
+	template <typename T>
+	std::vector<T> concat(const std::vector<std::vector<T>>& lists) {
+		std::vector<T> result;
+		for (const auto& list : lists) {
+			for (const auto& item : list) {
+				result.push_back(item);
+			}
+		}
+		return result;
+	}
+
+	// Filter: Return a list of items for which predicate(item) is true
+	template <typename T, typename Pred>
+	std::vector<T> filter(const std::vector<T>& list, Pred predicate) {
+		std::vector<T> result;
+		for (const auto& item : list) {
+			if (predicate(item)) {
+				result.push_back(item);
+			}
+		}
+		return result;
+	}
+
+	// Length: Return the total number of items in the list
+	template <typename T>
+	size_t length(const std::vector<T>& list) {
+		size_t count = 0;
+		for (auto it = list.begin(); it != list.end(); ++it) {
+			count++;
+		}
+		return count;
+	}
+
+	// Map: Apply a function to each item in the list and return the results
+	template <typename T, typename Func>
+	std::vector<T> map(const std::vector<T>& list, Func function) {
+		std::vector<T> result;
+		for (const auto& item : list) {
+			result.push_back(function(item));
+		}
+		return result;
+	}
+
+	// Foldl: Fold each item into the accumulator from the left
+	template <typename T, typename Acc, typename Func>
+	Acc foldl(const std::vector<T>& list, Acc initial, Func function) {
+		Acc accumulator = initial;
+		for (const auto& item : list) {
+			accumulator = function(accumulator, item);
+		}
+		return accumulator;
+	}
+
+	// Foldr: Fold each item into the accumulator from the right
+	template <typename T, typename Acc, typename Func>
+	Acc foldr(const std::vector<T>& list, Acc initial, Func function) {
+		Acc accumulator = initial;
+		for (auto it = list.rbegin(); it != list.rend(); ++it) {
+			accumulator = function(accumulator, *it);
+		}
+		return accumulator;
+	}
+
+	// Reverse: Return a list with all items in reversed order
+	template <typename T>
+	std::vector<T> reverse(const std::vector<T>& list) {
+		std::vector<T> result;
+		for (auto it = list.rbegin(); it != list.rend(); ++it) {
+			result.push_back(*it);
+		}
+		return result;
+	}
 }

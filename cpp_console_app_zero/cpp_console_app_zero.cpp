@@ -2,6 +2,7 @@
 
 int main()
 {
+	std::cout << "Testing Linked Lists" << std::endl;
 	simple_linked_list::List empty{};
 	std::cout << "Initial ll size " << empty.size() << std::endl;
 	empty.push(1);
@@ -1133,14 +1134,18 @@ namespace arcade {
 }
 
 namespace etl {
-	std::map<char, int> transform(const std::map<int, std::vector<char>>& old) {
-		std::map<char, int> new_format;
-		for (const auto& [points, letters] : old) {
-			for (char letter : letters) {
-				new_format[std::tolower(letter)] = points;
+	namespace etl {
+		std::map<char, int> transform(const std::map<int, std::vector<char>>& old) {
+			std::map<char, int> new_format;
+			for (const auto& pair : old) {
+				int points = pair.first;
+				const std::vector<char>& letters = pair.second;
+				for (char letter : letters) {
+					new_format[std::tolower(letter)] = points;
+				}
 			}
+			return new_format;
 		}
-		return new_format;
 	}
 }
 
@@ -1179,5 +1184,194 @@ namespace troy {
 	}
 	long power_intensity(const human& human) {
 		return human.own_power ? human.own_power.use_count() : 0;
+	}
+}
+
+namespace rail_fence_cipher {
+	std::string encode(const std::string& plaintext, int num_rails) {
+		std::vector<std::string> rails(num_rails);
+		int rail = 0;
+		bool down = true;
+		for (char c : plaintext) {
+			rails[rail] += c;
+			if (down) {
+				rail++;
+			}
+			else {
+				rail--;
+			}
+			if (rail == num_rails - 1) {
+				down = false;
+			}
+			if (rail == 0) {
+				down = true;
+			}
+		}
+		std::string ciphertext;
+		for (const std::string& rail : rails) {
+			ciphertext += rail;
+		}
+		return ciphertext;
+	}
+
+	std::string decode(const std::string& ciphertext, int num_rails) {
+		std::vector<std::string> rails(num_rails);
+		int rail = 0;
+		bool down = true;
+		for (size_t i = 0; i < ciphertext.size(); ++i) {
+			rails[rail] += ' ';
+			if (down) {
+				rail++;
+			}
+			else {
+				rail--;
+			}
+			if (rail == num_rails - 1) {
+				down = false;
+			}
+			if (rail == 0) {
+				down = true;
+			}
+		}
+		int index = 0;
+		for (std::string& rail : rails) {
+			for (char& c : rail) {
+				c = ciphertext[index++];
+			}
+		}
+		std::string plaintext;
+		rail = 0;
+		down = true;
+		for (size_t i = 0; i < ciphertext.size(); ++i) {
+			plaintext += rails[rail][0];
+			rails[rail].erase(0, 1);
+			if (down) {
+				rail++;
+			}
+			else {
+				rail--;
+			}
+			if (rail == num_rails - 1) {
+				down = false;
+			}
+			if (rail == 0) {
+				down = true;
+			}
+		}
+		return plaintext;
+	}
+}
+
+namespace spiral_matrix {
+	std::vector<std::vector<uint32_t>> spiral_matrix(int size) {
+		if (size == 0) return {};
+
+		std::vector<std::vector<uint32_t>> matrix(size, std::vector<uint32_t>(size));
+		int value = 1;
+		int top = 0, bottom = size - 1;
+		int left = 0, right = size - 1;
+
+		while (top <= bottom && left <= right) {
+			for (int i = left; i <= right; ++i) {
+				matrix[top][i] = value++;
+			}
+			++top;
+
+			for (int i = top; i <= bottom; ++i) {
+				matrix[i][right] = value++;
+			}
+			--right;
+
+			if (top <= bottom) {
+				for (int i = right; i >= left; --i) {
+					matrix[bottom][i] = value++;
+				}
+				--bottom;
+			}
+
+			if (left <= right) {
+				for (int i = bottom; i >= top; --i) {
+					matrix[i][left] = value++;
+				}
+				++left;
+			}
+		}
+
+		return matrix;
+	}
+}
+
+namespace sum_of_multiples {
+	int to(const std::vector<int>& bases, int level) {
+		std::unordered_set<int> multiples;
+		for (int base : bases) {
+			if (base == 0) continue;
+			for (int multiple = base; multiple < level; multiple += base) {
+				multiples.insert(multiple);
+			}
+		}
+		return std::accumulate(multiples.begin(), multiples.end(), 0);
+	}
+}
+
+namespace robot_name {
+	std::unordered_set<std::string> robot_name::robot::used_names_;
+
+	bool validate_name(const std::string& name) {
+		std::regex name_pattern("[A-Z]{2}[0-9]{3}");
+		return std::regex_match(name, name_pattern);
+	}
+}
+
+namespace run_length_encoding {
+	std::string encode(const std::string& text) {
+		if (text.empty()) {
+			return "";
+		}
+		std::string result;
+		char current_char = text[0];
+		int count = 1;
+		for (size_t i = 1; i < text.length(); ++i) {
+			if (text[i] == current_char) {
+				// Same character, increment count
+				count++;
+			}
+			else {
+				// Different character, append the run and reset
+				if (count > 1) {
+					result += std::to_string(count);
+				}
+				result += current_char;
+				current_char = text[i];
+				count = 1;
+			}
+		}
+		// Don't forget the last run
+		if (count > 1) {
+			result += std::to_string(count);
+		}
+		result += current_char;
+		return result;
+	}
+
+	std::string decode(const std::string& text) {
+		if (text.empty()) {
+			return "";
+		}
+		std::string result;
+		std::string count_str;
+		for (char c : text) {
+			if (std::isdigit(c)) {
+				// Collect digits for the count
+				count_str += c;
+			}
+			else {
+				// Non-digit character encountered
+				int count = count_str.empty() ? 1 : std::stoi(count_str);
+				result.append(count, c); // Append 'c' repeated 'count' times
+				count_str.clear();
+			}
+		}
+		return result;
 	}
 }
