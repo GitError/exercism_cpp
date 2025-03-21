@@ -1,251 +1,204 @@
-# Exercism C++ Exercises
+# Exercism C++ Solutions
 
-This repository contains solutions to C++ exercises from [Exercism](https://exercism.org/), a platform for practicing and improving coding skills through interactive exercises. 
+![C++](https://img.shields.io/badge/C%2B%2B-17-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
+![Exercises](https://img.shields.io/badge/exercises-100%2B-orange)
 
-## Structure
+This repository contains my solutions to C++ exercises from [Exercism](https://exercism.org/), a platform for practicing and improving coding skills through interactive exercises.
 
-The repository is organized into namespaces, each representing a specific exercise or topic. Each namespace is implemented in the `cpp_console_app_zero.cpp` and defined in `cpp_console_app_zero.h` file.
+## 📋 Overview
 
-- [x] raindrops 
-    - `std::string convert(int drops);`
-- [x] log_line
-    - `std::string message(std::string line);`
-	- `std::string log_level(std::string line);`
-	- `std::string reformat(std::string line);`
-- [x] reverse_string
-    - `std::string reverse_string(std::string input);`
-- [x] numbers_1
-    -  `double daily_rate(double hourly_rate);`
-	-  `double apply_discount(double before_discount, double discount);`
-	-  `int monthly_rate(double hourly_rate, double discount);`
-	-  `int days_in_budget(int budget, double hourly_rate, double discount);`
-- [x] vehicle_purchase
-    - `bool needs_license(std::string kind);`
-	- `std::string choose_vehicle(std::string option1, std::string option2);`
-	- `double calculate_resell_price(double original_price, double age);`
-- [x] loops_1
-    - `double interest_rate(double balance);`
-	- `double yearly_interest(double balance);`
-	- `double annual_balance_update(double balance);`
-	- `int years_until_desired_balance(double balance, double target_balance);`
-- [x] targets
-    - `class Alien {};`
-- [x] atbash_cipher
-    - `char atbash(char c);`
-	- `std::string transform(const std::string& input);`
-	- `std::string encode(const std::string& input);`
-	- `std::string decode(const std::string& input);`
-- [x] marking_grades
-    - `std::vector<int> round_down_scores(std::vector<double> student_scores);`
-	- `int count_failed_students(std::vector<int> student_scores);`
-	- `std::vector<int> above_threshold(std::vector<int> student_scores, int threshold);`
-	- `std::array<int, 4> letter_grades(int highest_score);`
-	- `std::vector<std::string> student_ranking(const std::vector<int>& student_scores, const std::vector<std::string>& student_names);`
-	- `std::string perfect_score(std::vector<int> student_scores, std::vector<std::string> student_names);`
-- [x] darts
-    - `int score(double x, double y);`
-- [x] hexadecimal
-    - `int hex_char_to_decimal(char hex_char);`
-	- `long long convert(const std::string& hex_string);`
-- [x] election
-    - `int vote_count(const ElectionResult& candidate);`
-	- `void increment_vote_count(ElectionResult& candidate, int votes);`
-	- `ElectionResult& determine_result(std::vector<ElectionResult>& final_count);`
-- [x] hellmath
-    - `enum AccountStatus { troll, guest, user, mod };`
-	- `enum Action { read, write, remove };`
-	- `bool display_post(AccountStatus poster, AccountStatus viewer);`
-	- `bool permission_check(Action action, AccountStatus account);`
-	- `bool valid_player_combination(AccountStatus player1, AccountStatus player2);`
-	- `bool has_priority(AccountStatus account1, AccountStatus account2);`
-- [x] protein_translation
-    - `std::vector<std::string> proteins(std::string rna);`
-- [x] rotational_cipher
-    - `std::string rotate(std::string input, int shift);`
-- [x] pangram
-    - `bool is_pangram(std::string sentence);`
-- [x] star_map
-    - `enum System`
-- [x] heaven
-    - `class Vessel {}`
-	- `std::string get_older_bob(Vessel one, Vessel two);`
-	- `bool in_the_same_system(Vessel one, Vessel two);`
-- [x] lasagna_master
-    - `struct amount;`
-	- `int preparationTime(std::vector<std::string> layers, int minutes_per_layer=2);`
-	- `amount quantities(std::vector<std::string> layers);`
-	- `void addSecretIngredient(std::vector<std::string> &my_layers, std::vector<std::string> friend_layers);`
-	- `void addSecretIngredient(std::vector<std::string>& my_layers, std::string secret_ingredient);`
-	- `std::vector<double> scaleRecipe(std::vector<double> quantities_for_two_portions, int portions);`
-- [x] speedywagon
-    - `struct pillar_men_sensor;`
-	- `int uv_light_heuristic(std::vector<int>* data_array);`
-	- `bool connection_check(pillar_men_sensor* sensor);`
-	- `int activity_counter(pillar_men_sensor* first_sensor, int capacity);`
-	- `bool alarm_control(pillar_men_sensor* sensor);`
-	- `bool uv_alarm(pillar_men_sensor* sensor);`
-- [x] space_age
-    - `class space_age {};`
-- [x] triangle
-    - `enum flavor;`
-	- `bool is_equilateral(double a, double b, double c);`
-- [x] two_fer
-    - `std::string two_fer(std::string name = "you");`
-- [x] grains
-    - `unsigned long long square(int n);`
-	- `unsigned long long total();`
-- [x] grade_school
-    - `class school {};`
-- [x] hamming
-	- `int compute(std::string a, std::string b);`
-- [x] nucleotide_count
-	- `std::map<char, int> count(const std::string sequence);`
-- [x] rna_transcription
-    - `char to_rna(char dna);`
-	- `std::string to_rna(std::string dna);`
-- [x] collatz_conjecture
-    - `int steps(int n);`
-- [x] difference_of_squares
-    - `int square_of_sum(int n);`
-    - `int sum_of_squares(int n);`
-    - `int difference(int n);`
-- [x] trinary
-    - `int to_decimal(const std::string& trinary);`
-- [x] isogram
-    - `bool is_isogram(const std::string& word);`
-- [x] luhn
-    - `bool valid(std::string digits);`
-- [x] nth_prime
-    - `bool is_prime(int n);`
-	- `int nth(int n);`
-- [x] simple_linked_list
-    - `class List {};`
-- [x] kindergarten_garden
-    - `enum Plants { clover, grass, violets, radishes };`
-	- `std::array<Plants, 4> plants(std::string garden, std::string student);`
-- [x] gigasecond
-    - `boost::posix_time::ptime advance(const boost::posix_time::ptime inputTime);`
-- [x] pascals_triangle
-	- `std::vector<std::vector<int>> generate_rows(int n);`
-- [x] armstrong_numbers
-	- `bool is_armstrong_number(int n);`
-- [x] acronym
-	- `std::string acronym(std::string phrase);`
-- [x] perfect_numbers
-	- `enum class classification { perfect, abundant, deficient };`
-	- `classification classify(int n);`
-- [x] isbn_verifier
-	- `bool is_valid(std::string isbn);`
-- [x] binary
-	- `int convert(std::string binary);`
-- [x] scrabble_score
-	- `int score(std::string word);`
-- [x] pig_latin
-	- `std::string translate(std::string phrase);`
-- [x] sublist
-	- `enum class comparison { equal, unequal, sublist, superlist };`
-	- `comparison check_lists(std::vector<int> list1, std::vector<int> list2);`
-- [x] secret_handshake
-	- `std::vector<std::string> commands(int n);`
-- [x] resistor_color
-	- `int color_code(std::string color);`
-	- `std::vector<std::string> colors();`
-- [x] secret_handshake
-	- `std::vector<std::string> commands(int n);`
-- [x] resistor_color
-	- `int color_code(std::string color);`
-	- `std::vector<std::string> colors();`
-- [x] say
-	- `std::string convert_hundreds(long long number);`
-	- `std::string in_english(long long number);`
-- [x] Bankaccount
-- [x] bob
-	- `std::string hey(std::string phrase);`
-- [x] chicken_coop
-	- `positions_to_quantity(int number);`
-- [x] prime_factors
-	- `std::vector<long long int> of(long long int number);`
-- [x] arcade
-	- `class HighScores`
-- [x] etl
-	- `std::map<char, int> transform(const std::map<int, std::vector<char>>& old);`
-- [x] sieve
-	- `std::vector<int> primes(int n);`
-- [x] troy
-	- `void give_new_artifact(human&, const std::string&);`
-	- `void exchange_artifacts(std::unique_ptr<artifact>&`
-	- `std::unique_ptr<artifact>&);`
-	- `void manifest_power(human&, const std::string&);`
-	- `void use_power(human&, human&);`
-	- `long power_intensity(const human& h);`
-- [x] binary_search_tree
-	- `class binary_tree`
-- [x] rail_fence_cipher
-	- `std::string encode(const std::string& plaintext, int num_rails);`
-	- `std::string decode(const std::string& ciphertext, int num_rails);`
-- [x] spiral_matrix
-	- `std::vector<std::vector<uint32_t>> spiral_matrix(int size);`
-- [x] sum_of_multiples
-	- `int to(const std::vector<int>& bases, int level);`
-- [x] robot_name
-	- `class robot`
-	- `bool validate_name(const std::string& name);`
-- [x] date_independent
-	- `class clock`
-- [x] run_length_encoding
-	- `std::string encode(const std::string& text);`
-	- `std::string decode(const std::string& text);`
-- [x] list_ops
-	- `void append(std::vector<T>& list1, const std::vector<T>& list2);`
-	- `std::vector<T> concat(const std::vector<std::vector<T>>& lists);`
-	- `std::vector<T> filter(const std::vector<T>& list, Pred predicate);`
-	- `size_t length(const std::vector<T>& list);`
-	- `std::vector<T> map(const std::vector<T>& list, Func function);`
-	- `Acc foldl(const std::vector<T>& list, Acc initial, Func function);`
-	- `Acc foldr(const std::vector<T>& list, Acc initial, Func function);`
-	- `std::vector<T> reverse(const std::vector<T>& list);`
-- [x] beer_song
-	- `std::string verse(int bottle_count);`
-	- `std::string sing(int start, int end = 0);`
-- [x] diamond
-	- `std::vector<std::string> rows(char letter);`
-- [x] phone_number
-	- `class phone_number;`
-- [x] yacht
-	- `int score(const std::vector<int>& dice, const std::string& category);`
-- [x] anagram
-	- `class anagram;`
-- [x] dnd_character
-	- `int modifier(int ability_score);`
-	- `int ability();`
-- [x] binary_search
-	- `std::size_t find(const std::vector<int>& data, int target);`
-- [x] complex_numbers
-	- `class Complex;`
-- [x] minesweeper
-	- `std::vector<std::string> annotate(const std::vector<std::string>& minefield);`
-- [x] series
-	- `std::vector<std::string> slice(const std::string& digits, int length);`
-- [x] food_chain
-	- `std::string verse(int verse_number);`
-	- `std::string verses(int start_verse, int end_verse);`
-	- `std::string sing();`
-- [x] robot_simulator
-	- `class Robot;`
-- [x] resistor_color_duo
-	- `int value(const std::vector<std::string>& colors);`
+These solutions demonstrate various C++ concepts including:
+- Object-oriented programming
+- Algorithm implementation
+- Template programming
+- Standard Library usage
+- Problem-solving techniques
 
+## 🗂️ Structure
 
-## Prerequisites
+The repository is organized into namespaces, each representing a specific exercise or topic:
+- Each exercise is implemented in `cpp_console_app_zero.cpp`
+- Function declarations are provided in `cpp_console_app_zero.h`
 
-To build and run this project, you need the following:
+## 🧩 Exercises
 
-1. **Visual Studio**: Install Visual Studio with the C++ development workload.
-2. **vcpkg**: Ensure `vcpkg` is installed and configured for dependency management.
+### String Operations
 
-## Getting Started
+| Exercise | Description | Functions |
+|----------|-------------|-----------|
+| **reverse_string** | Reverse a string | `std::string reverse_string(std::string input);` |
+| **log_line** | Parse log messages | Parse message, level, and reformat logs |
+| **acronym** | Create acronyms | `std::string acronym(std::string phrase);` |
+| **atbash_cipher** | Simple substitution cipher | Encoding and decoding functions |
+| **rotational_cipher** | Caesar cipher | `std::string rotate(std::string input, int shift);` |
+| **pangram** | Check if text uses all alphabet letters | `bool is_pangram(std::string sentence);` |
+| **isogram** | Check for repeated letters | `bool is_isogram(const std::string& word);` |
+| **scrabble_score** | Calculate Scrabble word score | `int score(std::string word);` |
+| **pig_latin** | Word transformation game | `std::string translate(std::string phrase);` |
+| **run_length_encoding** | String compression | Encode and decode functions |
+| **series** | Extract substrings | `std::vector<std::string> slice(const std::string& digits, int length);` |
+
+### Number Systems & Math
+
+| Exercise | Description | Functions |
+|----------|-------------|-----------|
+| **raindrops** | Number to string conversion | `std::string convert(int drops);` |
+| **grains** | Chess board calculation | Calculate grains on chessboard squares |
+| **binary** | Binary to decimal conversion | `int convert(std::string binary);` |
+| **trinary** | Trinary to decimal conversion | `int to_decimal(const std::string& trinary);` |
+| **hexadecimal** | Hex to decimal conversion | Conversion functions for hexadecimal |
+| **difference_of_squares** | Mathematical operations | Square of sum vs sum of squares |
+| **collatz_conjecture** | Sequence algorithm | `int steps(int n);` |
+| **armstrong_numbers** | Number property checker | `bool is_armstrong_number(int n);` |
+| **perfect_numbers** | Classify numbers | Perfect, abundant, or deficient |
+| **numbers_1** | Freelancer rates | Calculate daily/monthly rates |
+| **loops_1** | Interest calculations | Calculate compound interest |
+
+### Algorithms
+
+| Exercise | Description | Functions |
+|----------|-------------|-----------|
+| **hamming** | DNA distance calculation | `int compute(std::string a, std::string b);` |
+| **binary_search** | Efficient search algorithm | `std::size_t find(const std::vector<int>& data, int target);` |
+| **rail_fence_cipher** | Transposition cipher | Encoding and decoding with rails |
+| **spiral_matrix** | Matrix generation | `std::vector<std::vector<uint32_t>> spiral_matrix(int size);` |
+| **sum_of_multiples** | Sum calculation | `int to(const std::vector<int>& bases, int level);` |
+| **sieve** | Prime number generation | `std::vector<int> primes(int n);` |
+| **nth_prime** | Prime number finder | `int nth(int n);` |
+| **prime_factors** | Prime factorization | `std::vector<long long int> of(long long int number);` |
+| **largest_series_product** | Product in digits | `int largest_product(const std::string& digits, int span);` |
+| **two_bucket** | Water jug problem | Solution for classic algorithm problem |
+
+### Data Structures
+
+| Exercise | Description | Functions |
+|----------|-------------|-----------|
+| **grade_school** | Student database | Class for managing student roster |
+| **simple_linked_list** | Linked list implementation | Basic data structure |
+| **binary_search_tree** | Tree data structure | Binary tree implementation |
+| **list_ops** | List operations | Filter, map, fold, and other operations |
+
+### Object-Oriented Programming
+
+| Exercise | Description | Functions |
+|----------|-------------|-----------|
+| **space_age** | Age calculation | Calculate age on different planets |
+| **robot_name** | Random name generation | Class for generating robot names |
+| **date_independent** | Time handling | Clock implementation |
+| **complex_numbers** | Complex number math | Class for complex number operations |
+| **robot_simulator** | Robot movement | Robot position and direction simulation |
+| **dnd_character** | Game character generation | Character stats for D&D |
+| **anagram** | Word relationship finder | Class for detecting anagrams |
+| **targets** | Object system | `class Alien` implementation |
+
+### Biological Computing
+
+| Exercise | Description | Functions |
+|----------|-------------|-----------|
+| **rna_transcription** | DNA to RNA conversion | Convert DNA to RNA sequences |
+| **nucleotide_count** | DNA analysis | Count nucleotides in DNA sequence |
+| **protein_translation** | RNA to protein | RNA codon to protein translation |
+
+### Game Logic
+
+| Exercise | Description | Functions |
+|----------|-------------|-----------|
+| **darts** | Dart game scoring | `int score(double x, double y);` |
+| **yacht** | Dice game scoring | Score dice combinations |
+| **minesweeper** | Grid annotation | Add numbers to minesweeper grid |
+| **triangle** | Shape classification | Determine triangle types |
+| **food_chain** | Song generation | Generate lyrics programmatically |
+| **beer_song** | Song generator | Create beer song verses |
+| **kindergarten_garden** | Plant ownership | Link students to their plants |
+| **secret_handshake** | Binary sequences | Convert numbers to action sequences |
+
+### Electronics
+
+| Exercise | Description | Functions |
+|----------|-------------|-----------|
+| **resistor_color** | Color coding | Convert colors to resistor values |
+| **resistor_color_duo** | Resistor value calculation | Two-color resistor calculation |
+| **speedywagon** | Sensor system | Sensor data processing |
+
+### Miscellaneous
+
+| Exercise | Description | Functions |
+|----------|-------------|-----------|
+| **phone_number** | Number validation | Phone number parsing and formatting |
+| **isbn_verifier** | Book number validation | Validate ISBN numbers |
+| **luhn** | Validation algorithm | Credit card number validation |
+| **bob** | Conversation responses | Generate responses to inputs |
+| **say** | Number to text | Convert numbers to English text |
+| **gigasecond** | Date calculation | Add one billion seconds to time |
+| **pascals_triangle** | Mathematical pattern | Generate Pascal's triangle rows |
+| **diamond** | ASCII art | Generate letter diamond pattern |
+| **etl** | Data transformation | Transform legacy data formats |
+| **vehicle_purchase** | Decision logic | Vehicle purchase helper functions |
+| **marking_grades** | Grade calculation | Student grading system |
+| **election** | Vote counting | Election result determination |
+| **hellmath** | Permission system | User permission checking system |
+| **star_map** | Enum usage | Space system classification |
+| **heaven** | Vessel tracking | Vessel location and age checking |
+| **lasagna_master** | Recipe handling | Scale and modify recipes |
+| **arcade** | Score tracking | High score management system |
+| **two_fer** | Simple substitution | String substitution function |
+| **sublist** | List comparison | Compare relationship between lists |
+| **troy** | Artifact management | Manage and power artifacts |
+| **chicken_coop** | Quantity calculation | Convert positions to quantities |
+
+## 🛠️ Prerequisites
+
+To build and run this project, you need:
+
+1. **C++ Compiler**: A modern C++ compiler that supports C++17 or later
+2. **Build System**: CMake 3.12 or later
+3. **Visual Studio**: Visual Studio with the C++ development workload (Windows users)
+4. **vcpkg**: For dependency management
+
+## 🚀 Getting Started
 
 1. Clone the repository:
-   ```sh
+   ```bash
    git clone https://github.com/your-username/cpp_console_app_zero.git
    cd cpp_console_app_zero
+   ```
+
+2. Configure with CMake:
+   ```bash
+   mkdir build && cd build
+   cmake ..
+   ```
+
+3. Build the project:
+   ```bash
+   cmake --build .
+   ```
+
+4. Run tests:
+   ```bash
+   ctest
+   ```
+
+## 📚 Learning Resources
+
+- [Exercism C++ Track](https://exercism.org/tracks/cpp)
+- [C++ Reference](https://en.cppreference.com/)
+- [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
+
+## 📝 License
+
+This repository is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+While this is primarily a personal learning repository, suggestions for improvement are welcome:
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Submit a pull request
+
+---
+
+<p align="center">Created with ❤️ for C++ and continuous learning</p>
