@@ -215,6 +215,26 @@ The repository is organized into namespaces, each representing a specific exerci
 	- `int score(const std::vector<int>& dice, const std::string& category);`
 - [x] anagram
 	- `class anagram;`
+- [x] dnd_character
+	- `int modifier(int ability_score);`
+	- `int ability();`
+- [x] binary_search
+	- `std::size_t find(const std::vector<int>& data, int target);`
+- [x] complex_numbers
+	- `class Complex;`
+- [x] minesweeper
+	- `std::vector<std::string> annotate(const std::vector<std::string>& minefield);`
+- [x] series
+	- `std::vector<std::string> slice(const std::string& digits, int length);`
+- [x] food_chain
+	- `std::string verse(int verse_number);`
+	- `std::string verses(int start_verse, int end_verse);`
+	- `std::string sing();`
+- [x] robot_simulator
+	- `class Robot;`
+- [x] resistor_color_duo
+	- `int value(const std::vector<std::string>& colors);`
+
 
 ## Prerequisites
 

@@ -23,6 +23,8 @@
 #include <regex>
 #include <functional>
 #include <cstddef>
+#include <utility>
+#include <queue>
 
 int main();
 
@@ -319,7 +321,7 @@ namespace kindergarten_garden {
 	enum class Plants { clover, grass, violets, radishes };
 	std::array<Plants, 4> plants(const std::string garden, const std::string student);
 }
- 
+
 namespace gigasecond {
 	boost::posix_time::ptime advance(const boost::posix_time::ptime inputTime);
 }
@@ -373,8 +375,8 @@ namespace resistor_color {
 
 namespace say {
 	const std::vector<std::string> below_20 = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
-	const std::vector<std::string> tens = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
-	const std::vector<std::string> thousands = {"", "thousand", "million", "billion" };
+	const std::vector<std::string> tens = { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+	const std::vector<std::string> thousands = { "", "thousand", "million", "billion" };
 	std::string convert_hundreds(long long number);
 	std::string in_english(long long number);
 }
@@ -880,3 +882,217 @@ namespace anagram {
 	};
 }
 
+namespace dnd_character {
+	int modifier(int ability_score);
+	int ability();
+	struct Character {
+		int strength;
+		int dexterity;
+		int constitution;
+		int intelligence;
+		int wisdom;
+		int charisma;
+		int hitpoints;
+		Character();
+	};
+}
+
+namespace binary_search {
+	std::size_t find(const std::vector<int>& data, int target);
+}
+
+namespace complex_numbers {
+	class Complex {
+	private:
+		double real_part;
+		double imaginary_part;
+	public:
+		// Constructor
+		Complex(double real = 0.0, double imag = 0.0)
+			: real_part(real), imaginary_part(imag) {
+		}
+
+		// Accessor methods
+		double real() const { return real_part; }
+		double imag() const { return imaginary_part; }
+
+		// Basic operations
+		Complex conj() const;
+		double abs() const;
+		Complex exp() const;
+
+		// Arithmetic operators
+		Complex operator+(const Complex& other) const;
+		Complex operator-(const Complex& other) const;
+		Complex operator*(const Complex& other) const;
+		Complex operator/(const Complex& other) const;
+
+		// Operations with real numbers
+		Complex operator+(double scalar) const;
+		Complex operator-(double scalar) const;
+		Complex operator*(double scalar) const;
+		Complex operator/(double scalar) const;
+
+		// Friend functions for operations where real number is on the left
+		friend Complex operator+(double scalar, const Complex& complex);
+		friend Complex operator-(double scalar, const Complex& complex);
+		friend Complex operator*(double scalar, const Complex& complex);
+		friend Complex operator/(double scalar, const Complex& complex);
+	};
+}
+
+namespace minesweeper {
+	std::vector<std::string> annotate(const std::vector<std::string>& minefield);
+}
+
+namespace series {
+	std::vector<std::string> slice(const std::string& digits, int length);
+}
+
+namespace food_chain {
+	const std::vector<std::string> animals = {
+		"", "fly", "spider", "bird", "cat", "dog", "goat", "cow", "horse"
+	};
+
+	const std::vector<std::string> reactions = {
+		"",
+		"I don't know why she swallowed the fly. Perhaps she'll die.",
+		"It wriggled and jiggled and tickled inside her.",
+		"How absurd to swallow a bird!",
+		"Imagine that, to swallow a cat!",
+		"What a hog, to swallow a dog!",
+		"Just opened her throat and swallowed a goat!",
+		"I don't know how she swallowed a cow!",
+		"She's dead, of course!"
+	};
+
+	std::string verse(int verse_number) {
+		std::string result = "I know an old lady who swallowed a " + animals[verse_number] + ".\n";
+		result += reactions[verse_number] + "\n";
+		if (verse_number == 8 || verse_number == 1) {
+			return result;
+		}
+		for (int i = verse_number; i > 1; i--) {
+			if (i == 3) {
+				result += "She swallowed the bird to catch the spider that wriggled and jiggled and tickled inside her.\n";
+			}
+			else {
+				result += "She swallowed the " + animals[i] + " to catch the " + animals[i - 1] + ".\n";
+			}
+		}
+		result += "I don't know why she swallowed the fly. Perhaps she'll die.\n";
+		return result;
+	}
+
+	std::string verses(int start_verse, int end_verse) {
+		std::string result;
+		for (int i = start_verse; i <= end_verse; i++) {
+			result += verse(i);
+			result += "\n";
+		}
+		return result;
+	}
+
+	std::string sing() {
+		return verses(1, 8);
+	}
+}
+
+namespace robot_simulator {
+	enum class Bearing {
+		NORTH,
+		EAST,
+		SOUTH,
+		WEST
+	};
+
+	class Robot {
+	private:
+		std::pair<int, int> position;
+		Bearing bearing;
+	public:
+		Robot() : position(0, 0), bearing(Bearing::NORTH) {}
+		Robot(const std::pair<int, int>& pos, Bearing dir) : position(pos), bearing(dir) {}
+		
+		std::pair<int, int> get_position() const {
+			return position;
+		}
+
+		Bearing get_bearing() const {
+			return bearing;
+		}
+
+		void turn_right() {
+			switch (bearing) {
+			case Bearing::NORTH: bearing = Bearing::EAST; break;
+			case Bearing::EAST: bearing = Bearing::SOUTH; break;
+			case Bearing::SOUTH: bearing = Bearing::WEST; break;
+			case Bearing::WEST: bearing = Bearing::NORTH; break;
+			}
+		}
+
+		void turn_left() {
+			switch (bearing) {
+			case Bearing::NORTH: bearing = Bearing::WEST; break;
+			case Bearing::WEST: bearing = Bearing::SOUTH; break;
+			case Bearing::SOUTH: bearing = Bearing::EAST; break;
+			case Bearing::EAST: bearing = Bearing::NORTH; break;
+			}
+		}
+
+		void advance() {
+			switch (bearing) {
+			case Bearing::NORTH: position.second++; break;
+			case Bearing::EAST: position.first++; break;
+			case Bearing::SOUTH: position.second--; break;
+			case Bearing::WEST: position.first--; break;
+			}
+		}
+		
+		void execute_sequence(const std::string& instructions) {
+			for (char instruction : instructions) {
+				switch (instruction) {
+				case 'R': turn_right(); break;
+				case 'L': turn_left(); break;
+				case 'A': advance(); break;
+				}
+			}
+		}
+	};
+}
+
+namespace resistor_color_duo {
+	int value(const std::vector<std::string>& colors);
+}
+
+namespace largest_series_product {
+	int largest_product(const std::string& digits, int span);
+}
+
+namespace two_bucket {
+	enum class bucket_id { one, two };
+
+	struct measure_result {
+		int num_moves;
+		bucket_id goal_bucket;
+		int other_bucket_volume;
+	};
+
+	struct State {
+		int b1; 
+		int b2;
+		int moves;
+
+		State(int b1, int b2, int m) : b1(b1), b2(b2), moves(m) {}
+	};
+
+	struct StateHash {
+		size_t operator()(const State& state) const {
+			return std::hash<int>()(state.b1) ^
+				(std::hash<int>()(state.b2) << 1);
+		}
+	};
+
+	measure_result measure(int bucket1_capacity, int bucket2_capacity,
+		int target_volume, bucket_id start_bucket);
+}
