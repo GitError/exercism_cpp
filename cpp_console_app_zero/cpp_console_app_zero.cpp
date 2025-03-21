@@ -738,6 +738,7 @@ namespace simple_linked_list {
 
 namespace kindergarten_garden {
 	std::array<Plants, 4> plants(std::string garden, std::string student) {
+		std::string x = student;
 		std::array<Plants, 4> student_plants{};
 		int index = 0;
 		for (size_t i = 0; i < garden.size(); i += 2) {
@@ -918,7 +919,6 @@ namespace pig_latin {
 						break;
 					}
 				}
-
 				if (all_consonants) {
 					result.push_back(word.substr(y_index) + word.substr(0, y_index) + "ay");
 				}
@@ -966,3 +966,84 @@ namespace sublist {
 	}
 }
 
+namespace secret_handshake {
+	std::vector<std::string> commands(int n) {
+		std::vector<std::string> result;
+		if (n & 1) result.push_back("wink");
+		if (n & 2) result.push_back("double blink");
+		if (n & 4) result.push_back("close your eyes");
+		if (n & 8) result.push_back("jump");
+		if (n & 16) std::reverse(result.begin(), result.end());
+		return result;
+	}
+}
+
+namespace resistor_color {
+	std::vector<std::string> COLORS = {
+		"black", "brown", "red", "orange", "yellow",
+		"green", "blue", "violet", "grey", "white"
+	};
+
+	int color_code(std::string color) {
+		auto it = std::find(COLORS.begin(), COLORS.end(), color);
+		if (it == COLORS.end()) {
+			throw std::invalid_argument("Invalid color: " + color);
+		}
+		return std::distance(COLORS.begin(), it);
+	}
+
+	std::vector<std::string> colors() {
+		return COLORS;
+	}
+}
+
+namespace say {
+	std::string convert_hundreds(long long number) {
+		std::string result;
+		if (number >= 100) {
+			result += below_20[number / 100] + " hundred";
+			number %= 100;
+			if (number > 0) {
+				result += " ";
+			}
+		}
+		if (number >= 20) {
+			result += tens[number / 10];
+			number %= 10;
+			if (number > 0) {
+				result += "-" + below_20[number];
+			}
+		}
+		else if (number > 0) {
+			result += below_20[number];
+		}
+		return result;
+	}
+
+	std::string in_english(long long number) {
+		if (number < 0 || number >= 1'000'000'000'000) {
+			throw std::domain_error("Number out of range");
+		}
+		if (number == 0) {
+			return "zero";
+		}
+		std::string result;
+		int chunk_count = 0;
+		while (number > 0) {
+			long long chunk = number % 1000;
+			if (chunk > 0) {
+				std::string chunk_str = convert_hundreds(chunk);
+				if (!result.empty()) {
+					result = chunk_str + " " + thousands[chunk_count] + " " + result;
+				}
+				else {
+					result = chunk_str + " " + thousands[chunk_count];
+				}
+			}
+			number /= 1000;
+			chunk_count++;
+		}
+		result.erase(result.find_last_not_of(" ") + 1);
+		return result;
+	}
+}

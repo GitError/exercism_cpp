@@ -320,16 +320,7 @@ namespace pascals_triangle {
 }
 
 namespace armstrong_numbers {
-	bool is_armstrong_number(int n) {
-		int sum = 0;
-		int num = n;
-		int digits = static_cast<int>(std::log10(n)) + 1;
-		while (n > 0) {
-			sum += std::pow(n % 10, digits);
-			n /= 10;
-		}
-		return sum == num;
-	}
+	bool is_armstrong_number(int n);
 }
 
 namespace acronym {
@@ -360,4 +351,21 @@ namespace pig_latin {
 namespace sublist {
 	enum class comparison { equal, unequal, sublist, superlist };
 	comparison check_lists(std::vector<int> list1, std::vector<int> list2);
+}
+
+namespace secret_handshake {
+	std::vector<std::string> commands(int n);
+}
+
+namespace resistor_color {
+	int color_code(std::string color);
+	std::vector<std::string> colors();
+}
+
+namespace say {
+	const std::vector<std::string> below_20 = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+	const std::vector<std::string> tens = {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+	const std::vector<std::string> thousands = {"", "thousand", "million", "billion" };
+	std::string convert_hundreds(long long number);
+	std::string in_english(long long number);
 }

@@ -1,10 +1,11 @@
-## Exercism C++
+# Exercism C++ Exercises
 
-This is a collection of C++ exercises from the exercism.org C++ training path.
+This repository contains solutions to C++ exercises from [Exercism](https://exercism.org/), a platform for practicing and improving coding skills through interactive exercises. 
 
-All solutions are in `cpp_console_app_zero.cpp` & `cpp_console_app_zero.h` separated by namespace.
+## Structure
 
-Index:
+The repository is organized into namespaces, each representing a specific exercise or topic. Each namespace is implemented in the `cpp_console_app_zero.cpp` and defined in `cpp_console_app_zero.h` file.
+
 - [x] raindrops 
     - `std::string convert(int drops);`
 - [x] log_line
@@ -124,3 +125,50 @@ Index:
 	- `std::array<Plants, 4> plants(std::string garden, std::string student);`
 - [x] gigasecond
     - `boost::posix_time::ptime advance(const boost::posix_time::ptime inputTime);`
+- [x] pascals_triangle
+	- `std::vector<std::vector<int>> generate_rows(int n);`
+- [x] armstrong_numbers
+	- `bool is_armstrong_number(int n);`
+- [x] acronym
+	- `std::string acronym(std::string phrase);`
+- [x] perfect_numbers
+	- `enum class classification { perfect, abundant, deficient };`
+	- `classification classify(int n);`
+- [x] isbn_verifier
+	- `bool is_valid(std::string isbn);`
+- [x] binary
+	- `int convert(std::string binary);`
+- [x] scrabble_score
+	- `int score(std::string word);`
+- [x] pig_latin
+	- `std::string translate(std::string phrase);`
+- [x] sublist
+	- `enum class comparison { equal, unequal, sublist, superlist };`
+	- `comparison check_lists(std::vector<int> list1, std::vector<int> list2);`
+- [x] secret_handshake
+	- `std::vector<std::string> commands(int n);`
+- [x] resistor_color
+	- `int color_code(std::string color);`
+	- `std::vector<std::string> colors();`
+- [x] secret_handshake
+	- `std::vector<std::string> commands(int n);`
+- [x] resistor_color
+	- `int color_code(std::string color);`
+	- `std::vector<std::string> colors();`
+- [x] say
+	- `std::string convert_hundreds(long long number);`
+	- `std::string in_english(long long number);`
+
+## Prerequisites
+
+To build and run this project, you need the following:
+
+1. **Visual Studio**: Install Visual Studio with the C++ development workload.
+2. **vcpkg**: Ensure `vcpkg` is installed and configured for dependency management.
+
+## Getting Started
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/cpp_console_app_zero.git
+   cd cpp_console_app_zero
