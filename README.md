@@ -27,30 +27,30 @@ The repository is organized into namespaces, each representing a specific exerci
 
 | Exercise | Description | Functions |
 |----------|-------------|-----------|
-| **reverse_string** | Reverse a string | `std::string reverse_string(std::string input);` |
+| **reverse_string** | Reverse a string | Reverse a string |
 | **log_line** | Parse log messages | Parse message, level, and reformat logs |
-| **acronym** | Create acronyms | `std::string acronym(std::string phrase);` |
-| **atbash_cipher** | Simple substitution cipher | Encoding and decoding functions |
-| **rotational_cipher** | Caesar cipher | `std::string rotate(std::string input, int shift);` |
-| **pangram** | Check if text uses all alphabet letters | `bool is_pangram(std::string sentence);` |
-| **isogram** | Check for repeated letters | `bool is_isogram(const std::string& word);` |
-| **scrabble_score** | Calculate Scrabble word score | `int score(std::string word);` |
-| **pig_latin** | Word transformation game | `std::string translate(std::string phrase);` |
-| **run_length_encoding** | String compression | Encode and decode functions |
-| **series** | Extract substrings | `std::vector<std::string> slice(const std::string& digits, int length);` |
+| **acronym** | Create acronyms | acronym |
+| **atbash_cipher** | Simple substitution cipher | Encode, decode |
+| **rotational_cipher** | Caesar cipher | Rotate |
+| **pangram** | Check if text uses all alphabet letters |Is pangram |
+| **isogram** | Check for repeated letters | Is isogram |
+| **scrabble_score** | Calculate Scrabble word score | Score  |
+| **pig_latin** | Word transformation game | Translate |
+| **run_length_encoding** | String compression | Encode and decode |
+| **series** | Extract substrings | Slice |
 
 ### Number Systems & Math
 
 | Exercise | Description | Functions |
 |----------|-------------|-----------|
-| **raindrops** | Number to string conversion | `std::string convert(int drops);` |
+| **raindrops** | Number to string conversion |Convert |
 | **grains** | Chess board calculation | Calculate grains on chessboard squares |
-| **binary** | Binary to decimal conversion | `int convert(std::string binary);` |
-| **trinary** | Trinary to decimal conversion | `int to_decimal(const std::string& trinary);` |
-| **hexadecimal** | Hex to decimal conversion | Conversion functions for hexadecimal |
+| **binary** | Binary to decimal conversion | Convert to binary |
+| **trinary** | Trinary to decimal conversion | Convert to decimal |
+| **hexadecimal** | Hex to decimal conversion | Convert to hexadecimal |
 | **difference_of_squares** | Mathematical operations | Square of sum vs sum of squares |
-| **collatz_conjecture** | Sequence algorithm | `int steps(int n);` |
-| **armstrong_numbers** | Number property checker | `bool is_armstrong_number(int n);` |
+| **collatz_conjecture** | Sequence algorithm | Steps |
+| **armstrong_numbers** | Number property checker | Is armstrong number |
 | **perfect_numbers** | Classify numbers | Perfect, abundant, or deficient |
 | **numbers_1** | Freelancer rates | Calculate daily/monthly rates |
 | **loops_1** | Interest calculations | Calculate compound interest |
@@ -59,16 +59,17 @@ The repository is organized into namespaces, each representing a specific exerci
 
 | Exercise | Description | Functions |
 |----------|-------------|-----------|
-| **hamming** | DNA distance calculation | `int compute(std::string a, std::string b);` |
-| **binary_search** | Efficient search algorithm | `std::size_t find(const std::vector<int>& data, int target);` |
+| **hamming** | DNA distance calculation | Compute |
+| **binary_search** | Efficient search algorithm | Find |
 | **rail_fence_cipher** | Transposition cipher | Encoding and decoding with rails |
-| **spiral_matrix** | Matrix generation | `std::vector<std::vector<uint32_t>> spiral_matrix(int size);` |
-| **sum_of_multiples** | Sum calculation | `int to(const std::vector<int>& bases, int level);` |
-| **sieve** | Prime number generation | `std::vector<int> primes(int n);` |
-| **nth_prime** | Prime number finder | `int nth(int n);` |
-| **prime_factors** | Prime factorization | `std::vector<long long int> of(long long int number);` |
-| **largest_series_product** | Product in digits | `int largest_product(const std::string& digits, int span);` |
+| **spiral_matrix** | Matrix generation | Spiral matrix |
+| **sum_of_multiples** | Sum calculation | To |
+| **sieve** | Prime number generation | primes |
+| **nth_prime** | Prime number finder | Find Nth Prime |
+| **prime_factors** | Prime factorization | Find prime of N |
+| **largest_series_product** | Product in digits | Find largest product` |
 | **two_bucket** | Water jug problem | Solution for classic algorithm problem |
+| **Knapsack** | Combinatorial Optimization |Maximum Value calculation |
 
 ### Data Structures
 
@@ -90,7 +91,7 @@ The repository is organized into namespaces, each representing a specific exerci
 | **robot_simulator** | Robot movement | Robot position and direction simulation |
 | **dnd_character** | Game character generation | Character stats for D&D |
 | **anagram** | Word relationship finder | Class for detecting anagrams |
-| **targets** | Object system | `class Alien` implementation |
+| **targets** | Object system | Class Alien implementation |
 
 ### Biological Computing
 
@@ -104,7 +105,7 @@ The repository is organized into namespaces, each representing a specific exerci
 
 | Exercise | Description | Functions |
 |----------|-------------|-----------|
-| **darts** | Dart game scoring | `int score(double x, double y);` |
+| **darts** | Dart game scoring | Score dice combinations |
 | **yacht** | Dice game scoring | Score dice combinations |
 | **minesweeper** | Grid annotation | Add numbers to minesweeper grid |
 | **triangle** | Shape classification | Determine triangle types |
@@ -146,7 +147,7 @@ The repository is organized into namespaces, each representing a specific exerci
 | **sublist** | List comparison | Compare relationship between lists |
 | **troy** | Artifact management | Manage and power artifacts |
 | **chicken_coop** | Quantity calculation | Convert positions to quantities |
-
+| **parallel_letter_frequency** | Parallel computation | Calculate frequencies |
 ## 🛠️ Prerequisites
 
 To build and run this project, you need:

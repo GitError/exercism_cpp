@@ -25,6 +25,8 @@
 #include <cstddef>
 #include <utility>
 #include <queue>
+#include <execution>
+#include <string_view>
 
 int main();
 
@@ -1095,4 +1097,16 @@ namespace two_bucket {
 
 	measure_result measure(int bucket1_capacity, int bucket2_capacity,
 		int target_volume, bucket_id start_bucket);
+}
+
+namespace knapsack {
+	struct Item {
+		int weight;
+		int value;
+	};
+	int maximum_value(int max_weight, const std::vector<Item>& items);
+}
+
+namespace parallel_letter_frequency {
+	std::unordered_map<char, int> frequency(const std::vector<std::string_view>& texts);
 }

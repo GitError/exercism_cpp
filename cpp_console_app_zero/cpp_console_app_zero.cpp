@@ -2048,3 +2048,83 @@ namespace two_bucket {
 		throw std::domain_error("No solution exists");
 	}
 }
+
+namespace knapsack {
+	int maximum_value(int max_weight, const std::vector<Item>& items) {
+		// Handle edge case: no items or zero max weight
+		if (items.empty() || max_weight <= 0) {
+			return 0;
+		}
+
+		// Create a dynamic programming table
+		// dp[i][w] represents the maximum value when considering
+		// the first i items with a maximum weight w
+		std::vector<std::vector<int>> dp(items.size() + 1,
+			std::vector<int>(max_weight + 1, 0));
+
+		// Fill the dynamic programming table
+		for (size_t i = 1; i <= items.size(); ++i) {
+			for (int w = 0; w <= max_weight; ++w) {
+				// If the current item is too heavy, skip it
+				if (items[i - 1].weight > w) {
+					dp[i][w] = dp[i - 1][w];
+				}
+				else {
+					// Choose the maximum of:
+					// 1. Not taking the current item
+					// 2. Taking the current item + optimal value of remaining weight
+					dp[i][w] = std::max(dp[i - 1][w],
+						items[i - 1].value + dp[i - 1][w - items[i - 1].weight]);
+				}
+			}
+		}
+
+		// Return the maximum value that can be obtained
+		return dp[items.size()][max_weight];
+	}
+}
+
+namespace parallel_letter_frequency {
+    std::unordered_map<char, int> frequency(const std::vector<std::string_view>& texts) {
+        // Early return for empty input
+        if (texts.empty()) {
+            return {};
+        }
+
+        // Create a mutex for thread-safe updates to the frequencies map
+        std::mutex map_mutex;
+        
+        // Result map for letter frequencies
+        std::unordered_map<char, int> frequencies;
+
+        // Process each text in parallel
+        std::for_each(
+            std::execution::par,
+            texts.begin(),
+            texts.end(),
+            [&](const std::string_view& text) {
+                // Create a local map for this text's frequencies
+                std::unordered_map<char, int> local_frequencies;
+                
+                // Process each character in the text
+                for (char c : text) {
+                    // Convert to lowercase and check if it's a letter
+                    if (std::isalpha(c)) {
+                        char lower_c = std::tolower(c);
+                        local_frequencies[lower_c]++;
+                    }
+                }
+                
+                // Merge local results into the global map
+                if (!local_frequencies.empty()) {
+                    std::lock_guard<std::mutex> lock(map_mutex);
+                    for (const auto& [letter, count] : local_frequencies) {
+                        frequencies[letter] += count;
+                    }
+                }
+            }
+        );
+
+        return frequencies;
+    }
+}
