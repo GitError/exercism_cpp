@@ -204,6 +204,17 @@ The repository is organized into namespaces, each representing a specific exerci
 	- `Acc foldl(const std::vector<T>& list, Acc initial, Func function);`
 	- `Acc foldr(const std::vector<T>& list, Acc initial, Func function);`
 	- `std::vector<T> reverse(const std::vector<T>& list);`
+- [x] beer_song
+	- `std::string verse(int bottle_count);`
+	- `std::string sing(int start, int end = 0);`
+- [x] diamond
+	- `std::vector<std::string> rows(char letter);`
+- [x] phone_number
+	- `class phone_number;`
+- [x] yacht
+	- `int score(const std::vector<int>& dice, const std::string& category);`
+- [x] anagram
+	- `class anagram;`
 
 ## Prerequisites
 

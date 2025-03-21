@@ -1375,3 +1375,228 @@ namespace run_length_encoding {
 		return result;
 	}
 }
+
+namespace beer_song {
+	std::string verse(int bottle_count) {
+		std::stringstream verse_stream;
+		if (bottle_count == 0) {
+			verse_stream << "No more bottles of beer on the wall, no more bottles of beer.\n"
+				<< "Go to the store and buy some more, 99 bottles of beer on the wall.\n";
+		}
+		else if (bottle_count == 1) {
+			verse_stream << "1 bottle of beer on the wall, 1 bottle of beer.\n"
+				<< "Take it down and pass it around, no more bottles of beer on the wall.\n";
+		}
+		else if (bottle_count == 2) {
+			verse_stream << "2 bottles of beer on the wall, 2 bottles of beer.\n"
+				<< "Take one down and pass it around, 1 bottle of beer on the wall.\n";
+		}
+		else {
+			verse_stream << bottle_count << " bottles of beer on the wall, " << bottle_count << " bottles of beer.\n"
+				<< "Take one down and pass it around, " << (bottle_count - 1) << " bottles of beer on the wall.\n";
+		}
+		return verse_stream.str();
+	}
+
+	std::string sing(int start, int end) {
+		std::stringstream song;
+		for (int i = start; i >= end; i--) {
+			song << verse(i);
+			if (i > end) {
+				song << "\n";
+			}
+		}
+		return song.str();
+	}
+}
+
+namespace diamond {
+	std::vector<std::string> rows(char letter) {
+		// Calculate dimensions
+		int letter_pos = letter - 'A';
+		int width = 2 * letter_pos + 1;
+		std::vector<std::string> result;
+		// Generate top half (including middle row)
+		for (int i = 0; i <= letter_pos; ++i) {
+			std::string row(width, ' ');
+			char current_letter = 'A' + i;
+
+			// Place letters in the row
+			if (i == 0) {
+				// Special case for 'A'
+				row[letter_pos] = 'A';
+			}
+			else {
+				// Two letters with spaces between
+				row[letter_pos - i] = current_letter;
+				row[letter_pos + i] = current_letter;
+			}
+			result.push_back(row);
+		}
+		// Generate bottom half (excluding middle row)
+		for (int i = letter_pos - 1; i >= 0; --i) {
+			result.push_back(result[i]);
+		}
+		return result;
+	}
+}
+
+namespace phone_number {
+	phone_number::phone_number(const std::string& input) {
+		// Extract only digits from the input
+		std::string digits;
+		for (char c : input) {
+			if (std::isdigit(c)) {
+				digits.push_back(c);
+			}
+		}
+
+		// Check length and handle country code
+		if (digits.length() == 11) {
+			if (digits[0] != '1') {
+				throw std::domain_error("11 digits must start with 1");
+			}
+			digits.erase(0, 1); // Remove country code
+		}
+		else if (digits.length() != 10) {
+			throw std::domain_error("Invalid number of digits");
+		}
+
+		// Validate area code and exchange code
+		if (digits[0] == '0' || digits[0] == '1') {
+			throw std::domain_error("Area code cannot start with 0 or 1");
+		}
+		if (digits[3] == '0' || digits[3] == '1') {
+			throw std::domain_error("Exchange code cannot start with 0 or 1");
+		}
+
+		cleaned_number = digits;
+	}
+
+	std::string phone_number::number() const {
+		return cleaned_number;
+	}
+}
+
+namespace yacht {
+	int score(const std::vector<int>& dice, const std::string& category) {
+		// Count occurrences of each dice value
+		std::map<int, int> counts;
+		for (int die : dice) {
+			counts[die]++;
+		}
+
+		// Number categories (ones through sixes)
+		if (category == "ones") return counts[1] * 1;
+		if (category == "twos") return counts[2] * 2;
+		if (category == "threes") return counts[3] * 3;
+		if (category == "fours") return counts[4] * 4;
+		if (category == "fives") return counts[5] * 5;
+		if (category == "sixes") return counts[6] * 6;
+
+		// Full house: Three of one number and two of another
+		if (category == "full house") {
+			bool has_three = false;
+			bool has_two = false;
+
+			for (const auto& pair : counts) {
+				if (pair.second == 3) has_three = true;
+				if (pair.second == 2) has_two = true;
+			}
+
+			if (has_three && has_two) {
+				return std::accumulate(dice.begin(), dice.end(), 0);
+			}
+			return 0;
+		}
+
+		// Four of a kind: At least four dice showing the same face
+		if (category == "four of a kind") {
+			for (const auto& pair : counts) {
+				if (pair.second >= 4) {
+					return pair.first * 4;
+				}
+			}
+			return 0;
+		}
+
+		// Little straight: 1-2-3-4-5
+		if (category == "little straight") {
+			std::vector<int> sorted_dice = dice;
+			std::sort(sorted_dice.begin(), sorted_dice.end());
+			if (sorted_dice == std::vector<int>{1, 2, 3, 4, 5}) {
+				return 30;
+			}
+			return 0;
+		}
+
+		// Big straight: 2-3-4-5-6
+		if (category == "big straight") {
+			std::vector<int> sorted_dice = dice;
+			std::sort(sorted_dice.begin(), sorted_dice.end());
+			if (sorted_dice == std::vector<int>{2, 3, 4, 5, 6}) {
+				return 30;
+			}
+			return 0;
+		}
+
+		// Choice: Sum of the dice
+		if (category == "choice") {
+			return std::accumulate(dice.begin(), dice.end(), 0);
+		}
+
+		// Yacht: All five dice showing the same face
+		if (category == "yacht") {
+			for (const auto& pair : counts) {
+				if (pair.second == 5) {
+					return 50;
+				}
+			}
+			return 0;
+		}
+
+		// Default case (shouldn't happen with valid categories)
+		return 0;
+	}
+}
+
+namespace all_your_base {
+	std::vector<unsigned int> convert(int from_base, const std::vector<unsigned int>& digits, int to_base) {
+		// Validate bases
+		if (from_base <= 1) {
+			throw std::invalid_argument("Input base must be >= 2");
+		}
+		if (to_base <= 1) {
+			throw std::invalid_argument("Output base must be >= 2");
+		}
+
+		// Handle empty input
+		if (digits.empty()) {
+			return {};
+		}
+
+		// Convert from input base to decimal
+		unsigned int decimal_value = 0;
+		for (unsigned int digit : digits) {
+			// Validate each digit is valid for the input base
+			if (digit >= static_cast<unsigned int>(from_base)) {
+				throw std::invalid_argument("All digits must be less than the input base");
+			}
+			decimal_value = decimal_value * from_base + digit;
+		}
+
+		// Handle special case of zero
+		if (decimal_value == 0) {
+			return {};
+		}
+
+		// Convert from decimal to output base
+		std::vector<unsigned int> result;
+		while (decimal_value > 0) {
+			result.insert(result.begin(), decimal_value % to_base);
+			decimal_value /= to_base;
+		}
+
+		return result;
+	}
+}
