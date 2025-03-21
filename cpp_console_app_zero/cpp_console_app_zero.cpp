@@ -737,14 +737,27 @@ namespace simple_linked_list {
 }
 
 namespace kindergarten_garden {
-	std::array<Plants, 4> plants(std::string garden, std::string student) {
-		std::string x = student;
-		std::array<Plants, 4> student_plants{};
-		int index = 0;
-		for (size_t i = 0; i < garden.size(); i += 2) {
-			student_plants[index++] = static_cast<Plants>(garden[i] * 4 + garden[i + 1]);
-		}
-		return student_plants;
+	std::unordered_map<char, Plants> plant_map = {
+		{'C', Plants::clover},
+		{'G', Plants::grass},
+		{'V', Plants::violets},
+		{'R', Plants::radishes}
+	};
+
+	std::vector<std::string> students = {
+		"Alice", "Bob", "Charlie", "David", "Eve", "Fred", "Ginny", "Harriet",
+		"Ileana", "Joseph", "Kincaid", "Larry"
+	};
+
+	std::array<Plants, 4> plants(const std::string garden, const std::string student) {
+		std::array<Plants, 4> result;
+		size_t student_index = std::distance(students.begin(), std::find(students.begin(), students.end(), student));
+		size_t plant_index = student_index * 2;
+		result[0] = plant_map[garden[plant_index]];
+		result[1] = plant_map[garden[plant_index + 1]];
+		result[2] = plant_map[garden[garden.find('\n') + 1 + plant_index]];
+		result[3] = plant_map[garden[garden.find('\n') + 1 + plant_index + 1]];
+		return result;
 	}
 }
 
@@ -1045,5 +1058,126 @@ namespace say {
 		}
 		result.erase(result.find_last_not_of(" ") + 1);
 		return result;
+	}
+}
+
+namespace bob {
+	std::string hey(std::string phrase) {
+		phrase.erase(std::remove_if(phrase.begin(), phrase.end(), isspace), phrase.end());
+		if (phrase.empty()) {
+			return "Fine. Be that way!";
+		}
+		bool is_question = phrase.back() == '?';
+		bool has_letters = std::any_of(phrase.begin(), phrase.end(), ::isalpha);
+		bool is_yelling = has_letters && std::all_of(phrase.begin(), phrase.end(), [](char c) { return !isalpha(c) || isupper(c); });
+		if (is_question && is_yelling) {
+			return "Calm down, I know what I'm doing!";
+		}
+		if (is_question) {
+			return "Sure.";
+		}
+		if (is_yelling) {
+			return "Whoa, chill out!";
+		}
+		return "Whatever.";
+	}
+}
+
+namespace chicken_coop {
+	int positions_to_quantity(int number) {
+		int count = 0;
+		while (number > 0) {
+			if (number & 1) {
+				count++;
+			}
+			number >>= 1;
+		}
+		return count;
+	}
+}
+
+namespace prime_factors {
+	std::vector<long long int> of(long long int number) {
+		std::vector<long long int> factors;
+		for (long long int divisor = 2; number > 1; ++divisor) {
+			while (number % divisor == 0) {
+				factors.push_back(divisor);
+				number /= divisor;
+			}
+		}
+		return factors;
+	}
+}
+
+namespace arcade {
+	std::vector<int> HighScores::list_scores() {
+		return scores;
+	}
+
+	int HighScores::latest_score() {
+		return scores.back();
+	}
+
+	int HighScores::personal_best() {
+		return *std::max_element(scores.begin(), scores.end());
+	}
+
+	std::vector<int> HighScores::top_three() {
+		std::vector<int> top_scores = scores;
+		std::sort(top_scores.begin(), top_scores.end(), std::greater<int>());
+		if (top_scores.size() > 3) {
+			top_scores.resize(3);
+		}
+		return top_scores;
+	}
+}
+
+namespace etl {
+	std::map<char, int> transform(const std::map<int, std::vector<char>>& old) {
+		std::map<char, int> new_format;
+		for (const auto& [points, letters] : old) {
+			for (char letter : letters) {
+				new_format[std::tolower(letter)] = points;
+			}
+		}
+		return new_format;
+	}
+}
+
+namespace sieve {
+	std::vector<int> primes(int n) {
+		std::vector<int> primes;
+		std::vector<bool> is_prime(n + 1, true);
+		for (int p = 2; p * p <= n; ++p) {
+			if (is_prime[p]) {
+				for (int i = p * p; i <= n; i += p) {
+					is_prime[i] = false;
+				}
+			}
+		}
+		for (int p = 2; p <= n; ++p) {
+			if (is_prime[p]) {
+				primes.push_back(p);
+			}
+		}
+		return primes;
+	}
+}
+
+namespace troy {
+	void give_new_artifact(human& human, const std::string& artifact_name) {
+		human.possession = std::move(std::make_unique<artifact>(artifact_name));
+	}
+	void exchange_artifacts(std::unique_ptr<artifact>& a, std::unique_ptr<artifact>& b) {
+		std::swap(a, b);
+	}
+	void manifest_power(human& human, const std::string& power_name) {
+		human.own_power = std::make_shared<power>(power_name);
+	}
+	void use_power(human& caster, human& target) {
+		target.influenced_by = caster.own_power;
+	}
+	long power_intensity(const human& human) {
+		return human.own_power ? human.own_power.use_count() : 0;
 	}
 }

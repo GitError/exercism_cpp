@@ -158,6 +158,28 @@ The repository is organized into namespaces, each representing a specific exerci
 - [x] say
 	- `std::string convert_hundreds(long long number);`
 	- `std::string in_english(long long number);`
+- [x] Bankaccount
+- [x] bob
+	- `std::string hey(std::string phrase);`
+- [x] chicken_coop
+	- `positions_to_quantity(int number);`
+- [x] prime_factors
+	- `std::vector<long long int> of(long long int number);`
+- [x] arcade
+	- `class HighScores`
+- [x] etl
+	- `std::map<char, int> transform(const std::map<int, std::vector<char>>& old);`
+- [x] sieve
+	- `std::vector<int> primes(int n);`
+- [x] troy
+	- `void give_new_artifact(human&, const std::string&);`
+	- `void exchange_artifacts(std::unique_ptr<artifact>&`
+	- `std::unique_ptr<artifact>&);`
+	- `void manifest_power(human&, const std::string&);`
+	- `void use_power(human&, human&);`
+	- `long power_intensity(const human& h);`
+- [x] binary_search_tree
+	- `class binary_tree`
 
 ## Prerequisites
 

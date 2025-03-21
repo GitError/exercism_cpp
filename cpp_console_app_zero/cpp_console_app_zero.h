@@ -14,6 +14,7 @@
 #include <stack>
 #include <cstddef>
 #include "boost/date_time/posix_time/posix_time.hpp"
+#include <mutex>
 
 int main();
 
@@ -307,8 +308,8 @@ namespace simple_linked_list {
 }
 
 namespace kindergarten_garden {
-	enum Plants { clover, grass, violets, radishes };
-	std::array<Plants, 4> plants(std::string garden, std::string student);
+	enum class Plants { clover, grass, violets, radishes };
+	std::array<Plants, 4> plants(const std::string garden, const std::string student);
 }
  
 namespace gigasecond {
@@ -368,4 +369,227 @@ namespace say {
 	const std::vector<std::string> thousands = {"", "thousand", "million", "billion" };
 	std::string convert_hundreds(long long number);
 	std::string in_english(long long number);
+}
+
+namespace Bankaccount {
+	class Bankaccount {
+	public:
+		Bankaccount() : is_open(false), balance_amount(0) {}
+
+		void open() {
+			std::lock_guard<std::mutex> lock(mtx);
+			if (is_open) {
+				throw std::runtime_error("Account is already open");
+			}
+			is_open = true;
+			balance_amount = 0;
+		}
+
+		void close() {
+			std::lock_guard<std::mutex> lock(mtx);
+			if (!is_open) {
+				throw std::runtime_error("Account is already closed");
+			}
+			is_open = false;
+		}
+
+		void deposit(int amount) {
+			std::lock_guard<std::mutex> lock(mtx);
+			if (!is_open) {
+				throw std::runtime_error("Cannot deposit to a closed account");
+			}
+			if (amount < 0) {
+				throw std::runtime_error("Cannot deposit a negative amount");
+			}
+			balance_amount += amount;
+		}
+
+		void withdraw(int amount) {
+			std::lock_guard<std::mutex> lock(mtx);
+			if (!is_open) {
+				throw std::runtime_error("Cannot withdraw from a closed account");
+			}
+			if (amount < 0) {
+				throw std::runtime_error("Cannot withdraw a negative amount");
+			}
+			if (amount > balance_amount) {
+				throw std::runtime_error("Insufficient funds");
+			}
+			balance_amount -= amount;
+		}
+
+		int balance() const {
+			std::lock_guard<std::mutex> lock(mtx);
+			if (!is_open) {
+				throw std::runtime_error("Cannot check balance of a closed account");
+			}
+			return balance_amount;
+		}
+
+	private:
+		mutable std::mutex mtx;
+		bool is_open;
+		int balance_amount;
+	};
+}
+
+namespace bob {
+	std::string hey(std::string phrase);
+}
+
+namespace chicken_coop {
+	int positions_to_quantity(int number);
+}
+
+namespace prime_factors {
+	std::vector<long long int> of(long long int number);
+}
+
+namespace arcade {
+	class HighScores {
+	private:
+		std::vector<int> scores;
+	public:
+		HighScores(std::vector<int> scores) : scores(scores) {};
+		std::vector<int> list_scores();
+		int latest_score();
+		int personal_best();
+		std::vector<int> top_three();
+	};
+}
+
+namespace etl {
+	std::map<char, int> transform(const std::map<int, std::vector<char>>& old);
+}
+
+namespace sieve {
+	std::vector<int> primes(int n);
+}
+
+namespace troy {
+	struct artifact {
+		// constructors needed (until C++20)
+		artifact(std::string name) : name(name) {}
+		std::string name;
+	};
+	struct power {
+		// constructors needed (until C++20)
+		power(std::string effect) : effect(effect) {}
+		std::string effect;
+	};
+	struct human {
+		human() : possession{ nullptr }, own_power{ nullptr }, influenced_by{ nullptr } {}
+		std::unique_ptr<artifact> possession;
+		std::shared_ptr<power>    own_power;
+		std::shared_ptr<power>    influenced_by;
+	};
+	void give_new_artifact(human&, const std::string&);
+	void exchange_artifacts(std::unique_ptr<artifact>&, std::unique_ptr<artifact>&);
+	void manifest_power(human&, const std::string&);
+	void use_power(human&, human&);
+	long power_intensity(const human& h);
+}
+
+namespace binary_search_tree {
+	template <typename T>
+	class binary_tree {
+	public:
+		binary_tree(T value) : data_(value) {}
+
+		void insert(T value) {
+			if (value <= data_) {
+				if (left_) {
+					left_->insert(value);
+				}
+				else {
+					left_ = std::make_unique<binary_tree>(value);
+				}
+			}
+			else {
+				if (right_) {
+					right_->insert(value);
+				}
+				else {
+					right_ = std::make_unique<binary_tree>(value);
+				}
+			}
+		}
+
+		const T& data() const {
+			return data_;
+		}
+
+		const std::unique_ptr<binary_tree>& left() const {
+			return left_;
+		}
+
+		const std::unique_ptr<binary_tree>& right() const {
+			return right_;
+		}
+
+		// Iterator class for in-order traversal
+		class iterator {
+		public:
+			using iterator_category = std::input_iterator_tag;
+			using value_type = T;
+			using difference_type = std::ptrdiff_t;
+			using pointer = T*;
+			using reference = T&;
+
+			iterator() = default;
+			iterator(binary_tree* node) {
+				traverse_left(node);
+			}
+
+			iterator& operator++() {
+				if (!stack_.empty()) {
+					auto node = stack_.top();
+					stack_.pop();
+					traverse_left(node->right_.get());
+				}
+				return *this;
+			}
+
+			bool operator!=(const iterator& other) const {
+				return !(*this == other);
+			}
+
+			bool operator==(const iterator& other) const {
+				if (stack_.empty() && other.stack_.empty()) {
+					return true;
+				}
+				if (stack_.empty() || other.stack_.empty()) {
+					return false;
+				}
+				return stack_.top() == other.stack_.top();
+			}
+
+			const T& operator*() const {
+				return stack_.top()->data_;
+			}
+
+		private:
+			std::stack<binary_tree*> stack_;
+
+			void traverse_left(binary_tree* node) {
+				while (node) {
+					stack_.push(node);
+					node = node->left_.get();
+				}
+			}
+		};
+
+		iterator begin() {
+			return iterator(this);
+		}
+
+		iterator end() {
+			return iterator();
+		}
+
+	private:
+		T data_;
+		std::unique_ptr<binary_tree> left_;
+		std::unique_ptr<binary_tree> right_;
+	};
 }
