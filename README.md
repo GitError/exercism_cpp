@@ -148,6 +148,8 @@ The repository is organized into namespaces, each representing a specific exerci
 | **troy** | Artifact management | Manage and power artifacts |
 | **chicken_coop** | Quantity calculation | Convert positions to quantities |
 | **parallel_letter_frequency** | Parallel computation | Calculate frequencies |
+| **crypto_square** | Parallel computation | Cipher, normalize, calculate dimensions |
+
 ## 🛠️ Prerequisites
 
 To build and run this project, you need:
