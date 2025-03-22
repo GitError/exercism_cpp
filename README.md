@@ -45,7 +45,7 @@ Each exercise is implemented in its own namespace to prevent symbol collisions a
 | Namespace | Description | Functions | Complexity |
 |-----------|-------------|-----------|------------|
 | **reverse_string** | Reverse a string | `Reverse` | O(n) |
-| **log_line** | Parse log messages | `Parse`, `LogLevel`, `Reformat` | O(n) |
+| **log_line** | Parse log messages | `Parse`, `Reformat` | O(n) |
 | **acronym** | Create acronyms from phrases | `Acronym` | O(n) |
 | **atbash_cipher** | Substitution cipher implementation | `Encode`, `Decode` | O(n) |
 | **rotational_cipher** | Caesar cipher with variable rotation | `Rotate` | O(n) |
@@ -65,13 +65,14 @@ Each exercise is implemented in its own namespace to prevent symbol collisions a
 | **binary** | Binary to decimal conversion | `Convert` | O(n) |
 | **trinary** | Trinary (base-3) to decimal conversion | `ToDecimal` | O(n) |
 | **hexadecimal** | Hexadecimal to decimal conversion | `ToDecimal` | O(n) |
-| **difference_of_squares** | Mathematical operations | `SquareOfSum`, `SumOfSquares`, `Difference` | O(n) |
+| **difference_of_squares** | Mathematical operations | `SquareOfSum`, `SumOfSquares` | O(n) |
 | **collatz_conjecture** | Implementation of the Collatz sequence | `Steps` | O(log n) |
 | **armstrong_numbers** | Check if number equals sum of its digits raised to power | `IsArmstrongNumber` | O(log n) |
 | **perfect_numbers** | Classify numbers as perfect, abundant, or deficient | `Classify` | O(√n) |
 | **numbers_1** | Freelancer rates calculator | `DailyRate`, `MonthlyRate`, `DaysInBudget` | O(1) |
 | **loops_1** | Compound interest calculations | `InterestRate`, `AnnualBalanceUpdate`, `YearsBeforeDesiredBalance` | O(log n) |
 | **all_your_base** | Convert between arbitrary number bases | `Convert` | O(n) |
+| **zebra_puzzle** | Constraint satisfaction problems (CSPs) | `Solve` | O(n) |
 
 ### Algorithms & Problem Solving
 
@@ -89,6 +90,7 @@ Each exercise is implemented in its own namespace to prevent symbol collisions a
 | **two_bucket** | Water jug problem solution | `Solve` | O(m·n) |
 | **knapsack** | Combinatorial optimization algorithm | `MaximumValue` | O(n·W) |
 | **matching_brackets** | Validate nested brackets and braces | `CheckBalanced` | O(n) |
+| **queen_attack** | Backtracking problem | `ChessBoard` class | O(n!) |
 
 ### Data Structures
 
@@ -96,10 +98,10 @@ Each exercise is implemented in its own namespace to prevent symbol collisions a
 |-----------|-------------|-----------|------------|
 | **grade_school** | Student database management | `Add`, `Roster`, `Grade` | O(log n) |
 | **simple_linked_list** | Linked list implementation | `Push`, `Pop`, `Reverse`, `ToArray` | O(n) |
-| **linked_list** | Linked list implementation | OOP Approach | O(n) |
+| **linked_list** | Linked list implementation | `LinkedList` class | O(n) |
 | **binary_search_tree** | Tree data structure | `Insert`, `Search`, `InOrder`, `PreOrder`, `PostOrder` | O(log n) avg, O(n) worst |
 | **list_ops** | Functional list operations | `Append`, `Concat`, `Filter`, `Length`, `Map`, `Foldl`, `Foldr`, `Reverse` | O(n) |
-| **circular_buffer** | Circular Buffer Data Type | Template class `circular_buffer`  | O(n) |
+| **circular_buffer** | Circular Buffer Data Type | Template `circular_buffer` class  | O(n) |
 
 ### Object-Oriented Programming
 
@@ -172,6 +174,7 @@ Each exercise is implemented in its own namespace to prevent symbol collisions a
 | **parallel_letter_frequency** | Concurrent text analysis | `FrequencyMap` | Multithreading, synchronization, frequency analysis |
 | **crypto_square** | Classical cryptography | `Normalize`, `GetSquareDimensions`, `Cipher` | Text normalization, matrix operations |
 | **word_count** | Classic toy problem | `Words` | Cound frequencies of simple words, contractions, numbers, etc. |
+| **roman_numerals** | Utility | `Convert` | Convert int into roman umerals |
 
 ## 🛠️ Prerequisites
 
