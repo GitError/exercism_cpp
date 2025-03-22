@@ -3,6 +3,8 @@
 ![C++](https://img.shields.io/badge/C%2B%2B-17-blue)
 ![License](https://img.shields.io/badge/license-MIT-green)
 ![Exercises](https://img.shields.io/badge/exercises-100%2B-orange)
+![Build](https://img.shields.io/badge/build-passing-brightgreen)
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
 
 This repository contains my solutions to C++ exercises from [Exercism](https://exercism.org/), a platform for practicing and improving coding skills through interactive exercises.
 
@@ -15,33 +17,48 @@ These solutions demonstrate various C++ concepts including:
 - Standard Library usage
 - Problem-solving techniques
 
-## 🗂️ Structure
+## 🗂️ Repository Structure
 
-The repository is organized into namespaces, each representing a specific exercise or topic:
-- Each exercise is implemented in `cpp_console_app_zero.cpp`
-- Function declarations are provided in `cpp_console_app_zero.h`
+The repository follows a clean, organized structure:
+
+```
+cpp_console_app_zero/
+├── include/                 # Header files (.h)
+│   └── [namespace].h        # Exercise declarations
+├── src/                     # Implementation files (.cpp)
+│   ├── [namespace].cpp      # Exercise implementations
+│   └── cpp_console_app_zero.cpp  # Main entry point
+├── tests/                   # Test files
+│   └── [namespace]_test.cpp # Unit tests for exercises
+├── CMakeLists.txt           # CMake build configuration
+├── .gitignore               # Git ignore file
+├── LICENSE                  # MIT license file
+└── README.md                # This documentation
+```
+
+Each exercise is implemented in its own namespace to prevent symbol collisions and promote code organization.
 
 ## 🧩 Exercises
 
 ### String Operations
 
-| Exercise | Description | Functions |
+| Namespace | Description | Functions |
 |----------|-------------|-----------|
-| **reverse_string** | Reverse a string | Reverse a string |
+| **reverse_string** | Reverse a string | Reverse |
 | **log_line** | Parse log messages | Parse message, level, and reformat logs |
-| **acronym** | Create acronyms | acronym |
+| **acronym** | Create acronyms | Acronym |
 | **atbash_cipher** | Simple substitution cipher | Encode, decode |
 | **rotational_cipher** | Caesar cipher | Rotate |
-| **pangram** | Check if text uses all alphabet letters |Is pangram |
-| **isogram** | Check for repeated letters | Is isogram |
+| **pangram** | Check if text uses all alphabet letters |Is Pangram |
+| **isogram** | Check for repeated letters | Is Isogram |
 | **scrabble_score** | Calculate Scrabble word score | Score  |
 | **pig_latin** | Word transformation game | Translate |
-| **run_length_encoding** | String compression | Encode and decode |
+| **run_length_encoding** | String compression | Encode, decode |
 | **series** | Extract substrings | Slice |
 
 ### Number Systems & Math
 
-| Exercise | Description | Functions |
+| Namespace | Description | Functions |
 |----------|-------------|-----------|
 | **raindrops** | Number to string conversion |Convert |
 | **grains** | Chess board calculation | Calculate grains on chessboard squares |
@@ -51,13 +68,14 @@ The repository is organized into namespaces, each representing a specific exerci
 | **difference_of_squares** | Mathematical operations | Square of sum vs sum of squares |
 | **collatz_conjecture** | Sequence algorithm | Steps |
 | **armstrong_numbers** | Number property checker | Is armstrong number |
-| **perfect_numbers** | Classify numbers | Perfect, abundant, or deficient |
-| **numbers_1** | Freelancer rates | Calculate daily/monthly rates |
+| **perfect_numbers** | Classify numbers | Is perfect, abundant, or deficient |
+| **numbers_1** | Freelancer rates | Calculate daily/ monthly rates |
 | **loops_1** | Interest calculations | Calculate compound interest |
+| **all_your_base** | Convert between different bases | Convert |
 
 ### Algorithms
 
-| Exercise | Description | Functions |
+| Namespace | Description | Functions |
 |----------|-------------|-----------|
 | **hamming** | DNA distance calculation | Compute |
 | **binary_search** | Efficient search algorithm | Find |
@@ -69,11 +87,12 @@ The repository is organized into namespaces, each representing a specific exerci
 | **prime_factors** | Prime factorization | Find prime of N |
 | **largest_series_product** | Product in digits | Find largest product` |
 | **two_bucket** | Water jug problem | Solution for classic algorithm problem |
-| **Knapsack** | Combinatorial Optimization |Maximum Value calculation |
+| **Knapsack** | Combinatorial Optimization | Maximum Value calculation |
+| **matching_brackets** | Match nested brackets, braces, and parentheses | Check validity |
 
 ### Data Structures
 
-| Exercise | Description | Functions |
+| Namespace | Description | Functions |
 |----------|-------------|-----------|
 | **grade_school** | Student database | Class for managing student roster |
 | **simple_linked_list** | Linked list implementation | Basic data structure |
@@ -82,7 +101,7 @@ The repository is organized into namespaces, each representing a specific exerci
 
 ### Object-Oriented Programming
 
-| Exercise | Description | Functions |
+| Namespace | Description | Functions |
 |----------|-------------|-----------|
 | **space_age** | Age calculation | Calculate age on different planets |
 | **robot_name** | Random name generation | Class for generating robot names |
@@ -95,7 +114,7 @@ The repository is organized into namespaces, each representing a specific exerci
 
 ### Biological Computing
 
-| Exercise | Description | Functions |
+| Namespace | Description | Functions |
 |----------|-------------|-----------|
 | **rna_transcription** | DNA to RNA conversion | Convert DNA to RNA sequences |
 | **nucleotide_count** | DNA analysis | Count nucleotides in DNA sequence |
@@ -103,7 +122,7 @@ The repository is organized into namespaces, each representing a specific exerci
 
 ### Game Logic
 
-| Exercise | Description | Functions |
+| Namespace | Description | Functions |
 |----------|-------------|-----------|
 | **darts** | Dart game scoring | Score dice combinations |
 | **yacht** | Dice game scoring | Score dice combinations |
@@ -116,7 +135,7 @@ The repository is organized into namespaces, each representing a specific exerci
 
 ### Electronics
 
-| Exercise | Description | Functions |
+| Namespace | Description | Functions |
 |----------|-------------|-----------|
 | **resistor_color** | Color coding | Convert colors to resistor values |
 | **resistor_color_duo** | Resistor value calculation | Two-color resistor calculation |
@@ -124,9 +143,10 @@ The repository is organized into namespaces, each representing a specific exerci
 
 ### Miscellaneous
 
-| Exercise | Description | Functions |
+| Namespace | Description | Functions |
 |----------|-------------|-----------|
 | **phone_number** | Number validation | Phone number parsing and formatting |
+| **leap** | Leap year validation | Validate year |
 | **isbn_verifier** | Book number validation | Validate ISBN numbers |
 | **luhn** | Validation algorithm | Credit card number validation |
 | **bob** | Conversation responses | Generate responses to inputs |
@@ -149,6 +169,7 @@ The repository is organized into namespaces, each representing a specific exerci
 | **chicken_coop** | Quantity calculation | Convert positions to quantities |
 | **parallel_letter_frequency** | Parallel computation | Calculate frequencies |
 | **crypto_square** | Parallel computation | Cipher, normalize, calculate dimensions |
+
 
 ## 🛠️ Prerequisites
 
@@ -183,11 +204,39 @@ To build and run this project, you need:
    ctest
    ```
 
+### Using the Solutions
+
+Each solution is implemented as a separate namespace, making it easy to include and use in your own projects:
+
+```cpp
+#include "reverse_string.h"
+
+int main() {
+    std::string original = "Hello, World!";
+    std::string reversed = reverse_string::Reverse(original);
+    std::cout << reversed << std::endl;  // Outputs: "!dlroW ,olleH"
+    return 0;
+}
+```
+
 ## 📚 Learning Resources
 
 - [Exercism C++ Track](https://exercism.org/tracks/cpp)
 - [C++ Reference](https://en.cppreference.com/)
 - [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
+- [Effective Modern C++](https://www.oreilly.com/library/view/effective-modern-c/9781491908419/) by Scott Meyers
+- [A Tour of C++](https://www.stroustrup.com/tour2.html) by Bjarne Stroustrup
+
+## 📋 Coding Standards
+
+This project follows these coding standards:
+
+- [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html)
+- Variable names use camelCase
+- Function names use PascalCase
+- Constants use UPPER_SNAKE_CASE
+- Class members prefixed with m_
+- Comprehensive comments in a Doxygen-compatible format
 
 ## 📝 License
 
@@ -204,4 +253,8 @@ While this is primarily a personal learning repository, suggestions for improvem
 
 ---
 
-<p align="center">Created with ❤️ for C++ and continuous learning</p>
+<p align="center">
+	<img src="https://img.shields.io/badge/Made%20with-Modern%20C%2B%2B-blue" alt="Made with Modern C++">
+  <br> 
+  with ❤️ for C++ and continuous learning
+  </p>
