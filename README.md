@@ -23,153 +23,155 @@ The repository follows a clean, organized structure:
 
 ```
 cpp_console_app_zero/
-├── include/                 # Header files (.h)
-│   └── [namespace].h        # Exercise declarations
-├── src/                     # Implementation files (.cpp)
-│   ├── [namespace].cpp      # Exercise implementations
-│   └── cpp_console_app_zero.cpp  # Main entry point
-├── tests/                   # Test files
-│   └── [namespace]_test.cpp # Unit tests for exercises
-├── CMakeLists.txt           # CMake build configuration
-├── .gitignore               # Git ignore file
-├── LICENSE                  # MIT license file
-└── README.md                # This documentation
+├── include/                        # Header files (.h)
+│   └── [namespace].h               # Exercise declarations
+├── src/                            # Implementation files (.cpp)
+│   ├── [namespace].cpp             # Exercise implementations
+│   └── cpp_console_app_zero.cpp    # Main entry point
+├── tests/                          # Test files
+│   └── [namespace]_test.cpp        # Unit tests for exercises
+├── CMakeLists.txt                  # CMake build configuration
+├── .gitignore                      # Git ignore file
+├── LICENSE                         # MIT license file
+└── README.md                       # This documentation
 ```
 
 Each exercise is implemented in its own namespace to prevent symbol collisions and promote code organization.
 
-## 🧩 Exercises
+## 🧩 Exercises by Category
 
 ### String Operations
 
-| Namespace | Description | Functions |
-|----------|-------------|-----------|
-| **reverse_string** | Reverse a string | Reverse |
-| **log_line** | Parse log messages | Parse message, level, and reformat logs |
-| **acronym** | Create acronyms | Acronym |
-| **atbash_cipher** | Simple substitution cipher | Encode, decode |
-| **rotational_cipher** | Caesar cipher | Rotate |
-| **pangram** | Check if text uses all alphabet letters |Is Pangram |
-| **isogram** | Check for repeated letters | Is Isogram |
-| **scrabble_score** | Calculate Scrabble word score | Score  |
-| **pig_latin** | Word transformation game | Translate |
-| **run_length_encoding** | String compression | Encode, decode |
-| **series** | Extract substrings | Slice |
+| Namespace | Description | Functions | Complexity |
+|-----------|-------------|-----------|------------|
+| **reverse_string** | Reverse a string | `Reverse` | O(n) |
+| **log_line** | Parse log messages | `Parse`, `LogLevel`, `Reformat` | O(n) |
+| **acronym** | Create acronyms from phrases | `Acronym` | O(n) |
+| **atbash_cipher** | Substitution cipher implementation | `Encode`, `Decode` | O(n) |
+| **rotational_cipher** | Caesar cipher with variable rotation | `Rotate` | O(n) |
+| **pangram** | Check if text uses all alphabet letters | `IsPangram` | O(n) |
+| **isogram** | Check for repeated letters | `IsIsogram` | O(n) |
+| **scrabble_score** | Calculate Scrabble word score | `Score` | O(n) |
+| **pig_latin** | Word transformation game | `Translate` | O(n) |
+| **run_length_encoding** | String compression algorithm | `Encode`, `Decode` | O(n) |
+| **series** | Extract consecutive substrings | `Slice` | O(n·m) |
 
-### Number Systems & Math
+### Number Systems & Mathematical Operations
 
-| Namespace | Description | Functions |
-|----------|-------------|-----------|
-| **raindrops** | Number to string conversion |Convert |
-| **grains** | Chess board calculation | Calculate grains on chessboard squares |
-| **binary** | Binary to decimal conversion | Convert to binary |
-| **trinary** | Trinary to decimal conversion | Convert to decimal |
-| **hexadecimal** | Hex to decimal conversion | Convert to hexadecimal |
-| **difference_of_squares** | Mathematical operations | Square of sum vs sum of squares |
-| **collatz_conjecture** | Sequence algorithm | Steps |
-| **armstrong_numbers** | Number property checker | Is armstrong number |
-| **perfect_numbers** | Classify numbers | Is perfect, abundant, or deficient |
-| **numbers_1** | Freelancer rates | Calculate daily/ monthly rates |
-| **loops_1** | Interest calculations | Calculate compound interest |
-| **all_your_base** | Convert between different bases | Convert |
+| Namespace | Description | Functions | Complexity |
+|-----------|-------------|-----------|------------|
+| **raindrops** | Convert numbers to strings based on factors | `Convert` | O(1) |
+| **grains** | Calculate exponential growth on chessboard | `Square`, `Total` | O(1) |
+| **binary** | Binary to decimal conversion | `Convert` | O(n) |
+| **trinary** | Trinary (base-3) to decimal conversion | `ToDecimal` | O(n) |
+| **hexadecimal** | Hexadecimal to decimal conversion | `ToDecimal` | O(n) |
+| **difference_of_squares** | Mathematical operations | `SquareOfSum`, `SumOfSquares`, `Difference` | O(n) |
+| **collatz_conjecture** | Implementation of the Collatz sequence | `Steps` | O(log n) |
+| **armstrong_numbers** | Check if number equals sum of its digits raised to power | `IsArmstrongNumber` | O(log n) |
+| **perfect_numbers** | Classify numbers as perfect, abundant, or deficient | `Classify` | O(√n) |
+| **numbers_1** | Freelancer rates calculator | `DailyRate`, `MonthlyRate`, `DaysInBudget` | O(1) |
+| **loops_1** | Compound interest calculations | `InterestRate`, `AnnualBalanceUpdate`, `YearsBeforeDesiredBalance` | O(log n) |
+| **all_your_base** | Convert between arbitrary number bases | `Convert` | O(n) |
 
-### Algorithms
+### Algorithms & Problem Solving
 
-| Namespace | Description | Functions |
-|----------|-------------|-----------|
-| **hamming** | DNA distance calculation | Compute |
-| **binary_search** | Efficient search algorithm | Find |
-| **rail_fence_cipher** | Transposition cipher | Encoding and decoding with rails |
-| **spiral_matrix** | Matrix generation | Spiral matrix |
-| **sum_of_multiples** | Sum calculation | To |
-| **sieve** | Prime number generation | primes |
-| **nth_prime** | Prime number finder | Find Nth Prime |
-| **prime_factors** | Prime factorization | Find prime of N |
-| **largest_series_product** | Product in digits | Find largest product` |
-| **two_bucket** | Water jug problem | Solution for classic algorithm problem |
-| **Knapsack** | Combinatorial Optimization | Maximum Value calculation |
-| **matching_brackets** | Match nested brackets, braces, and parentheses | Check validity |
+| Namespace | Description | Functions | Complexity |
+|-----------|-------------|-----------|------------|
+| **hamming** | DNA distance calculation | `ComputeDistance` | O(n) |
+| **binary_search** | Efficient search in sorted array | `Find`, `FindRecursive` | O(log n) |
+| **rail_fence_cipher** | Transposition cipher algorithm | `Encode`, `Decode` | O(n) |
+| **spiral_matrix** | Generate matrix with spiral pattern | `GenerateMatrix` | O(n²) |
+| **sum_of_multiples** | Sum calculation with filtering | `To` | O(n) |
+| **sieve** | Sieve of Eratosthenes implementation | `Primes` | O(n log log n) |
+| **nth_prime** | Prime number finder | `FindNthPrime` | O(n log log n) |
+| **prime_factors** | Prime factorization algorithm | `FindPrimeFactors` | O(√n) |
+| **largest_series_product** | Maximize product in digit sequences | `FindLargestProduct` | O(n) |
+| **two_bucket** | Water jug problem solution | `Solve` | O(m·n) |
+| **knapsack** | Combinatorial optimization algorithm | `MaximumValue` | O(n·W) |
+| **matching_brackets** | Validate nested brackets and braces | `CheckBalanced` | O(n) |
 
 ### Data Structures
 
-| Namespace | Description | Functions |
-|----------|-------------|-----------|
-| **grade_school** | Student database | Class for managing student roster |
-| **simple_linked_list** | Linked list implementation | Basic data structure |
-| **binary_search_tree** | Tree data structure | Binary tree implementation |
-| **list_ops** | List operations | Filter, map, fold, and other operations |
+| Namespace | Description | Functions | Complexity |
+|-----------|-------------|-----------|------------|
+| **grade_school** | Student database management | `Add`, `Roster`, `Grade` | O(log n) |
+| **simple_linked_list** | Linked list implementation | `Push`, `Pop`, `Reverse`, `ToArray` | O(n) |
+| **linked_list** | Linked list implementation | OOP Approach | O(n) |
+| **binary_search_tree** | Tree data structure | `Insert`, `Search`, `InOrder`, `PreOrder`, `PostOrder` | O(log n) avg, O(n) worst |
+| **list_ops** | Functional list operations | `Append`, `Concat`, `Filter`, `Length`, `Map`, `Foldl`, `Foldr`, `Reverse` | O(n) |
+| **circular_buffer** | Circular Buffer Data Type | Template class `circular_buffer`  | O(n) |
 
 ### Object-Oriented Programming
 
-| Namespace | Description | Functions |
-|----------|-------------|-----------|
-| **space_age** | Age calculation | Calculate age on different planets |
-| **robot_name** | Random name generation | Class for generating robot names |
-| **date_independent** | Time handling | Clock implementation |
-| **complex_numbers** | Complex number math | Class for complex number operations |
-| **robot_simulator** | Robot movement | Robot position and direction simulation |
-| **dnd_character** | Game character generation | Character stats for D&D |
-| **anagram** | Word relationship finder | Class for detecting anagrams |
-| **targets** | Object system | Class Alien implementation |
+| Namespace | Description | Classes/Functions | Features |
+|-----------|-------------|-------------------|----------|
+| **space_age** | Calculate age on different planets | `SpaceAge` class | Encapsulation, conversion methods |
+| **robot_name** | Random name generator with constraints | `Robot` class | Static member management, PRNG |
+| **date_independent** | Time handling without date libraries | `Clock` class | Operator overloading, equality comparison |
+| **complex_numbers** | Complex number mathematics | `ComplexNumber` class | Comprehensive math operations, operator overloading |
+| **robot_simulator** | Robot movement simulation | `Robot`, `Direction` classes | State management, command interpretation |
+| **dnd_character** | Game character generation | `Character` class | Random stat generation, derived attributes |
+| **anagram** | Word relationship detection | `Anagram` class | Matching algorithms, filtering |
+| **targets** | Object system demonstration | `Alien` class hierarchy | Inheritance, polymorphism |
 
 ### Biological Computing
 
-| Namespace | Description | Functions |
-|----------|-------------|-----------|
-| **rna_transcription** | DNA to RNA conversion | Convert DNA to RNA sequences |
-| **nucleotide_count** | DNA analysis | Count nucleotides in DNA sequence |
-| **protein_translation** | RNA to protein | RNA codon to protein translation |
+| Namespace | Description | Functions | Features |
+|-----------|-------------|-----------|----------|
+| **rna_transcription** | DNA to RNA conversion | `ToRNA` | Nucleotide mapping, error handling |
+| **nucleotide_count** | DNA analysis | `Count`, `NucleotideCounts` | Frequency analysis, validation |
+| **protein_translation** | RNA codon to protein translation | `Proteins` | Codon lookup, sequence processing |
 
-### Game Logic
+### Game Logic & Simulation
 
-| Namespace | Description | Functions |
-|----------|-------------|-----------|
-| **darts** | Dart game scoring | Score dice combinations |
-| **yacht** | Dice game scoring | Score dice combinations |
-| **minesweeper** | Grid annotation | Add numbers to minesweeper grid |
-| **triangle** | Shape classification | Determine triangle types |
-| **food_chain** | Song generation | Generate lyrics programmatically |
-| **beer_song** | Song generator | Create beer song verses |
-| **kindergarten_garden** | Plant ownership | Link students to their plants |
-| **secret_handshake** | Binary sequences | Convert numbers to action sequences |
+| Namespace | Description | Functions | Features |
+|-----------|-------------|-----------|----------|
+| **darts** | Dart game scoring | `Score` | Distance calculation, tiered scoring |
+| **yacht** | Dice game scoring (like Yahtzee) | `Score` | Category evaluation, pattern matching |
+| **minesweeper** | Grid annotation algorithm | `Annotate` | 2D grid processing, neighbor counting |
+| **triangle** | Geometric shape classification | `Kind`, `IsTriangle` | Validation, type determination |
+| **food_chain** | Song generation | `Verse`, `Verses` | Recursive pattern generation |
+| **beer_song** | Song generator | `Verse`, `Sing` | Template-based text generation |
+| **kindergarten_garden** | Plant ownership tracking | `Plants` | Data mapping, lookup |
+| **secret_handshake** | Binary sequence interpreter | `Commands` | Bitwise operations |
 
-### Electronics
+### Electronics & Systems
 
-| Namespace | Description | Functions |
-|----------|-------------|-----------|
-| **resistor_color** | Color coding | Convert colors to resistor values |
-| **resistor_color_duo** | Resistor value calculation | Two-color resistor calculation |
-| **speedywagon** | Sensor system | Sensor data processing |
+| Namespace | Description | Functions | Features |
+|-----------|-------------|-----------|----------|
+| **resistor_color** | Resistor color code translator | `ColorCode`, `Colors` | Lookup tables, enum usage |
+| **resistor_color_duo** | Two-band resistor calculation | `Value` | Color combination interpretation |
+| **speedywagon** | Sensor system simulation | `Position`, `Speed`, `DistanceTravelled` | Data integration, time-series analysis |
 
-### Miscellaneous
+### Miscellaneous Utilities
 
-| Namespace | Description | Functions |
-|----------|-------------|-----------|
-| **phone_number** | Number validation | Phone number parsing and formatting |
-| **leap** | Leap year validation | Validate year |
-| **isbn_verifier** | Book number validation | Validate ISBN numbers |
-| **luhn** | Validation algorithm | Credit card number validation |
-| **bob** | Conversation responses | Generate responses to inputs |
-| **say** | Number to text | Convert numbers to English text |
-| **gigasecond** | Date calculation | Add one billion seconds to time |
-| **pascals_triangle** | Mathematical pattern | Generate Pascal's triangle rows |
-| **diamond** | ASCII art | Generate letter diamond pattern |
-| **etl** | Data transformation | Transform legacy data formats |
-| **vehicle_purchase** | Decision logic | Vehicle purchase helper functions |
-| **marking_grades** | Grade calculation | Student grading system |
-| **election** | Vote counting | Election result determination |
-| **hellmath** | Permission system | User permission checking system |
-| **star_map** | Enum usage | Space system classification |
-| **heaven** | Vessel tracking | Vessel location and age checking |
-| **lasagna_master** | Recipe handling | Scale and modify recipes |
-| **arcade** | Score tracking | High score management system |
-| **two_fer** | Simple substitution | String substitution function |
-| **sublist** | List comparison | Compare relationship between lists |
-| **troy** | Artifact management | Manage and power artifacts |
-| **chicken_coop** | Quantity calculation | Convert positions to quantities |
-| **parallel_letter_frequency** | Parallel computation | Calculate frequencies |
-| **crypto_square** | Parallel computation | Cipher, normalize, calculate dimensions |
-
+| Namespace | Description | Functions | Features |
+|-----------|-------------|-----------|----------|
+| **phone_number** | Phone number validation and formatting | `Clean`, `Format` | Regular expressions, validation rules |
+| **leap** | Leap year validation | `IsLeapYear` | Conditional logic, calendrical calculations |
+| **isbn_verifier** | Book number validation | `IsValid` | Checksum algorithm, format validation |
+| **luhn** | Credit card validation algorithm | `Valid` | Checksum calculation, input sanitization |
+| **bob** | Conversation response simulation | `Hey` | Text analysis, state-based responses |
+| **say** | Number to text converter | `Say` | Number decomposition, text composition |
+| **gigasecond** | Date calculation | `AdvanceTime` | Time manipulation, large integer handling |
+| **pascals_triangle** | Mathematical pattern generator | `Rows`, `Row` | Combinatorial calculations |
+| **diamond** | ASCII art generator | `MakeDiamond` | Pattern generation, string manipulation |
+| **etl** | Data transformation utility | `Transform` | Data structure conversion |
+| **vehicle_purchase** | Decision logic simulator | `NeedsLicense`, `ChooseVehicle`, `CalculateResellPrice` | Conditional branching, depreciation calculation |
+| **marking_grades** | Student grading system | `Round`, `LetterGrade`, `PassFail` | Grade computation, threshold application |
+| **election** | Vote counting and analysis | `VoteCount`, `FindWinner` | Map reduction, plurality determination |
+| **hellmath** | Permission system | `CheckPermission`, `GrantPermission` | Bitwise operations, permission modeling |
+| **star_map** | Space classification | `StarType`, `SpaceRegion` classes | Enum implementation, object classification |
+| **heaven** | Vessel tracking system | `TrackLocation`, `CheckAge` | Geospatial analysis, age verification |
+| **lasagna_master** | Recipe management | `PreparationTime`, `Quantities`, `AddSecretIngredient` | Recipe scaling, ingredient substitution |
+| **arcade** | Score tracking system | `GetHighScores`, `AddPlayerScore` | Leaderboard management, score ordering |
+| **two_fer** | String substitution | `TwoFer` | Default parameters, string formatting |
+| **sublist** | List relationship comparison | `Relation` | List analysis, pattern matching |
+| **troy** | Artifact management system | `RegisterArtifact`, `PowerLevel` | Resource tracking, power calculation |
+| **chicken_coop** | Quantity calculator | `PositionToQuantity` | Mapping algorithms, lookup optimization |
+| **parallel_letter_frequency** | Concurrent text analysis | `FrequencyMap` | Multithreading, synchronization, frequency analysis |
+| **crypto_square** | Classical cryptography | `Normalize`, `GetSquareDimensions`, `Cipher` | Text normalization, matrix operations |
+| **word_count** | Classic toy problem | `Words` | Cound frequencies of simple words, contractions, numbers, etc. |
 
 ## 🛠️ Prerequisites
 
@@ -238,23 +240,8 @@ This project follows these coding standards:
 - Class members prefixed with m_
 - Comprehensive comments in a Doxygen-compatible format
 
-## 📝 License
-
-This repository is licensed under the MIT License - see the LICENSE file for details.
-
-## 🤝 Contributing
-
-While this is primarily a personal learning repository, suggestions for improvement are welcome:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
-
 ---
 
 <p align="center">
 	<img src="https://img.shields.io/badge/Made%20with-Modern%20C%2B%2B-blue" alt="Made with Modern C++">
-  <br> 
-  with ❤️ for C++ and continuous learning
-  </p>
+</p>
