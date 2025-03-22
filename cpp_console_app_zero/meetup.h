@@ -1,7 +1,8 @@
+#pragma once
+
 #include <boost/date_time/gregorian/gregorian.hpp>
 
 namespace meetup {
-
     class scheduler {
     public:
         scheduler(boost::gregorian::greg_month month, unsigned int year);

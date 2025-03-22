@@ -175,6 +175,7 @@ Each exercise is implemented in its own namespace to prevent symbol collisions a
 | **crypto_square** | Classical cryptography | `Normalize`, `GetSquareDimensions`, `Cipher` | Text normalization, matrix operations |
 | **word_count** | Classic toy problem | `Words` | Cound frequencies of simple words, contractions, numbers, etc. |
 | **roman_numerals** | Utility | `Convert` | Convert int into roman umerals |
+| **roman_numerals** | Utility | `scheduler` class | Create meetup utility |
 
 ## 🛠️ Prerequisites
 

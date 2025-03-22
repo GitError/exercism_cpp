@@ -1,4 +1,5 @@
 #pragma once
+
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -23,6 +24,7 @@ namespace anagram {
 			std::sort(result.begin(), result.end());
 			return result;
 		}
+
 	public:
 		anagram(const std::string& word)
 			: word(word), normalized_word(sort_string(to_lower(word))) {

@@ -24,6 +24,7 @@ namespace robot_name {
 			robot_name_ = new_name;
 			used_names_.insert(robot_name_);
 		}
+
 	private:
 		std::string robot_name_;
 		static std::unordered_set<std::string> used_names_;

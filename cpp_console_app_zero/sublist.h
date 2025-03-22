@@ -22,4 +22,4 @@ namespace sublist {
     // Helper function to check if one list is a sublist of another
     bool is_sublist(const std::vector<int>& potential_sublist, const std::vector<int>& potential_superlist);
 
-} // namespace sublist
+}

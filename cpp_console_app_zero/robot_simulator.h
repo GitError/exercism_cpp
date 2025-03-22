@@ -1,4 +1,5 @@
 #pragma once
+
 #include <utility>
 #include <string>
 
@@ -9,6 +10,7 @@ namespace robot_simulator {
 	private:
 		std::pair<int, int> position;
 		Bearing bearing;
+
 	public:
 		Robot() : position(0, 0), bearing(Bearing::NORTH) {}
 		Robot(const std::pair<int, int>& pos, Bearing dir) : position(pos), bearing(dir) {}

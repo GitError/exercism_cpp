@@ -5,6 +5,7 @@ namespace complex_numbers {
 	private:
 		double real_part;
 		double imaginary_part;
+
 	public:
 		// Constructor
 		Complex(double real = 0.0, double imag = 0.0)

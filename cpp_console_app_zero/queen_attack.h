@@ -5,7 +5,6 @@
 #include <cmath>
 
 namespace queen_attack {
-
     class chess_board {
     public:
         // Constructor that takes positions for white and black queens
@@ -27,5 +26,4 @@ namespace queen_attack {
         // Helper method to validate queen positions
         void validate_position(const std::pair<int, int>& position) const;
     };
-
 }

@@ -2,6 +2,9 @@
 
 namespace targets {
 	class Alien {
+	private:
+		int health;
+
 	public:
 		int x_coordinate;
 		int y_coordinate;
@@ -26,7 +29,5 @@ namespace targets {
 		bool collision_detection(const Alien& player) const {
 			return x_coordinate == player.x_coordinate && y_coordinate == player.y_coordinate;
 		}
-	private:
-		int health;
 	};
 }

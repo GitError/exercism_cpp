@@ -1,5 +1,4 @@
-#ifndef CIRCULAR_BUFFER_H
-#define CIRCULAR_BUFFER_H
+#pragma once
 
 #include <vector>
 #include <stdexcept>
@@ -106,5 +105,3 @@ namespace circular_buffer {
 		return size == 0;
 	}
 }
-
-#endif

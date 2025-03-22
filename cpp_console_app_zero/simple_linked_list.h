@@ -1,4 +1,5 @@
 #pragma once
+
 #include <cstddef>
 
 namespace simple_linked_list {
@@ -14,6 +15,7 @@ namespace simple_linked_list {
 		void push(int entry);
 		int pop();
 		void reverse();
+
 	private:
 		struct Element {
 			Element(int data) : data{ data } {};
