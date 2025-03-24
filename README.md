@@ -3,7 +3,6 @@
 ![C++](https://img.shields.io/badge/C%2B%2B-17-blue)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Exercises](https://img.shields.io/badge/exercises-100%2B-blue)
-![Track](https://img.shields.io/badge/completion-100%-brightgreen)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
 
@@ -244,9 +243,3 @@ This project follows these coding standards:
 - Constants use UPPER_SNAKE_CASE
 - Class members prefixed with m_
 - Comprehensive comments in a Doxygen-compatible format
-
----
-
-<p align="center">
-	<img src="https://img.shields.io/badge/Made%20with-Modern%20C%2B%2B-blue" alt="Made with Modern C++">
-</p>
