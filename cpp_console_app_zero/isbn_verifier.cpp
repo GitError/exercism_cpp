@@ -1,6 +1,5 @@
 #include "isbn_verifier.h"
 #include <algorithm>
-#include <cctype>
 
 namespace isbn_verifier {
 	bool is_valid(std::string isbn) {

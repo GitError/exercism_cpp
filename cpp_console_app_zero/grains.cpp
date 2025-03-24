@@ -1,5 +1,6 @@
 #include "grains.h"
 #include <stdexcept>
+#include <limits.h>
 
 namespace grains {
 	unsigned long long square(int n)

@@ -1,5 +1,4 @@
 #include "largest_series_product.h"
-#include <cctype>
 #include <stdexcept>
 #include <algorithm>
 

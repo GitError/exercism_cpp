@@ -1,6 +1,5 @@
 #include "bob.h"
 #include <algorithm>
-#include <cctype>
 
 namespace bob {
 	std::string hey(std::string phrase) {

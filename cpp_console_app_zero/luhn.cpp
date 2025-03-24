@@ -1,4 +1,5 @@
 #include "luhn.h"
+#include <algorithm>
 
 namespace luhn {
 	bool valid(std::string digits) {

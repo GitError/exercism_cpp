@@ -1,4 +1,6 @@
 #include "kindergarten_garden.h"
+#include <vector>
+#include <algorithm>
 #include <unordered_map>
 
 namespace kindergarten_garden {

@@ -11,6 +11,7 @@ namespace rna_transcription {
 		default: throw std::invalid_argument("Invalid nucleotide");
 		}
 	}
+
 	std::string to_rna(const std::string dna) {
 		std::string rna;
 		for (char c : dna) {

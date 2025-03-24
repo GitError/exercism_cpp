@@ -1,5 +1,4 @@
 #include "troy.h"
-#include <utility>
 
 namespace troy {
 	void give_new_artifact(human& human, const std::string& artifact_name) {

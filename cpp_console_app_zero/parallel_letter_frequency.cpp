@@ -1,8 +1,7 @@
 #include "parallel_letter_frequency.h"
-#include <algorithm> 
-#include <cctype>
 #include <execution>
 #include <mutex>
+#include <cctype>
 
 namespace parallel_letter_frequency {
     std::unordered_map<char, int> frequency(const std::vector<std::string_view>& texts) {

@@ -43,5 +43,6 @@ namespace robot_name {
 			return name;
 		}
 	};
+
 	bool validate_name(const std::string& name);
 }

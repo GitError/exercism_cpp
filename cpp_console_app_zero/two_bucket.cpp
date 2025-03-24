@@ -1,7 +1,7 @@
 #include "two_bucket.h"
 #include <queue>
-#include <unordered_set> 
-#include <stdexcept> 
+#include <unordered_set>
+#include <stdexcept>
 
 namespace two_bucket {
 

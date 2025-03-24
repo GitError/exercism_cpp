@@ -1,5 +1,4 @@
 #include "run_length_encoding.h"
-#include <cctype>
 
 namespace run_length_encoding {
 	std::string encode(const std::string& text) {

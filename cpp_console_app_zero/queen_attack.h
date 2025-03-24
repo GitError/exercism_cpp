@@ -1,7 +1,6 @@
 #pragma once
 
-#include <utility>
-#include <stdexcept>
+#include <utility> // Include this header for std::pair
 #include <cmath>
 
 namespace queen_attack {

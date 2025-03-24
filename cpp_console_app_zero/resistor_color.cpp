@@ -1,4 +1,5 @@
 #include "resistor_color.h"
+#include <algorithm>
 #include <stdexcept>
 
 namespace resistor_color {

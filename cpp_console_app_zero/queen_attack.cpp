@@ -1,7 +1,7 @@
 #include "queen_attack.h"
+#include <stdexcept>
 
 namespace queen_attack {
-
     chess_board::chess_board(std::pair<int, int> white_position, std::pair<int, int> black_position)
         : white_position_(white_position), black_position_(black_position) {
 

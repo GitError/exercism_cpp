@@ -1,6 +1,5 @@
 #include "crypto_square.h"
 #include <cmath>
-#include <cctype>
 
 namespace crypto_square {
 	cipher::cipher(const std::string& input) {

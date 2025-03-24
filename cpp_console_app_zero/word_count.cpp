@@ -1,5 +1,4 @@
 #include "word_count.h"
-#include <cctype>
 #include <algorithm>
 #include <sstream>
 

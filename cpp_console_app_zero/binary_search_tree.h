@@ -1,5 +1,8 @@
 #pragma once
 
+#include <stack>
+#include <memory>
+
 namespace binary_search_tree {
 	template <typename T>
 	class binary_tree {

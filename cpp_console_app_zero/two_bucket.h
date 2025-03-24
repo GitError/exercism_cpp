@@ -1,6 +1,7 @@
 #pragma once
 
 #include <numeric>
+#include <stdexcept>
 
 namespace two_bucket {
 	enum class bucket_id { one, two };

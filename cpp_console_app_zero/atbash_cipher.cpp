@@ -1,5 +1,4 @@
 #include "atbash_cipher.h"
-#include <cctype>
 
 namespace atbash_cipher {
 	char atbash(char c) {
