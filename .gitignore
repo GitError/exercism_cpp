@@ -364,5 +364,19 @@ MigrationBackup/
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
 
+# Visual Studio Code settings
 .vscode/
+
+# VCPkg - C++ package manager
 vcpkg_installed
+
+# CMAKE
+build/
+CMakeFiles/
+CMakeCache.txt
+CMakeOutput.log
+CMakeError.log
+CMakeScripts/
+CMakeLists.txt.user
+CMakeLists.txt.user.cmake
+CMakeLists.txt.user.ninja
