@@ -1,5 +1,6 @@
 #include "parallel_letter_frequency.h"
 #include <execution>
+#include <algorithm>
 #include <mutex>
 #include <cctype>
 
@@ -17,11 +18,9 @@ namespace parallel_letter_frequency {
         std::unordered_map<char, int> frequencies;
 
         // Process each text in parallel
-        std::for_each(
-            std::execution::par,
-            texts.begin(),
-            texts.end(),
-            [&](const std::string_view& text) {
+
+        /* windows implementation -- requirec C++17, gcc 9.0 or higher
+        std::for_each(std::execution::par, texts.begin(), texts.end(), [&](const std::string_view& text) {
                 // Create a local map for this text's frequencies
                 std::unordered_map<char, int> local_frequencies;
 
@@ -43,6 +42,7 @@ namespace parallel_letter_frequency {
                 }
             }
         );
+        */
 
         return frequencies;
     }

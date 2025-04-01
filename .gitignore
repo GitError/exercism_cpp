@@ -369,6 +369,7 @@ FodyWeavers.xsd
 
 # VCPkg - C++ package manager
 vcpkg_installed
+vcpkg/
 
 # CMAKE
 build/

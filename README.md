@@ -8,14 +8,18 @@
 
 This repository contains my solutions to C++ exercises from [Exercism](https://exercism.org/), a platform for practicing and improving coding skills through interactive exercises.
 
+---
+
 ## 📋 Overview
 
-These solutions demonstrate various C++ concepts including:
+These solutions demonstrate various C++ concepts, including:
 - Object-oriented programming
 - Algorithm implementation
 - Template programming
 - Standard Library usage
 - Problem-solving techniques
+
+---
 
 ## 🗂️ Repository Structure
 
@@ -185,6 +189,7 @@ To build and run this project, you need:
 2. **Build System**: CMake 3.12 or later
 3. **Visual Studio**: Visual Studio with the C++ development workload (Windows users)
 4. **vcpkg**: For dependency management
+   - Run `vcpkg install` to donwload packages
 
 ## 🚀 Getting Started
 
