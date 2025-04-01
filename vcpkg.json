@@ -1,5 +1,6 @@
 {
   "dependencies": [
-    "boost-date-time"
+    "boost-date-time",
+    "gtest"
   ]
 }

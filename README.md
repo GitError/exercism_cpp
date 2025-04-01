@@ -2,7 +2,7 @@
 
 ![C++](https://img.shields.io/badge/C%2B%2B-17-blue)
 ![License](https://img.shields.io/badge/license-MIT-blue)
-![Exercises](https://img.shields.io/badge/exercises-100%2B-blue)
+![Exercises](https://img.shields.io/badge/exercises-100%2B-brightgreen)
 ![Build](https://img.shields.io/badge/build-passing-brightgreen)
 ![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
 
@@ -195,7 +195,7 @@ To build and run this project, you need:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/cpp_console_app_zero.git
+   git clone https://github.com/giterror/cpp_console_app_zero.git
    cd cpp_console_app_zero
    ```
 
